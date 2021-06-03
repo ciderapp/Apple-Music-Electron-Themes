@@ -6,6 +6,11 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "7.4"
+        extensions: curl
     - name: analyze code with StyleCI
       uses: nathane/styleci-action@latest # Available tags: "@1.1", "@v1.1.0"
       with:
