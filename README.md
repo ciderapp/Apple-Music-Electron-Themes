@@ -3,8 +3,8 @@ Simple theme repository for use with https://github.com/cryptofyre/Apple-Music-E
 
 ## Instructions
 1. Make a theme using the template or design your own.
-2. Make a PR with the theme you created inside the `community-themes/` folder.
+2. Make a PR with the theme you created in the root of the repository.
 3. Submit the PR.
-4. Wait for repository approval.
+4. Congratulations your theme is now apart of Apple Music Electron!
 
 Note: Please do not steal/replicate themes unless you give them direct credit in the file.
