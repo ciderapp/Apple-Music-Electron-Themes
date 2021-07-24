@@ -1,5 +1,5 @@
 # Apple-Music-Electron-Themes
-Simple theme repository for use with https://github.com/cryptofyre/Apple-Music-Electron
+Simple theme repository for use with https://github.com/Apple-Music-Electron/Apple-Music-Electron
 
 ## Instructions
 1. Make a theme using the template or design your own.
