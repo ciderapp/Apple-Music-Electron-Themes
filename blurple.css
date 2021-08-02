@@ -5,34 +5,42 @@
 */
 
 @media (prefers-color-scheme:dark) {
-    :root {
-        --primaryColor: #5865f2 !important;
-        --primaryColor-rgb: 88, 101, 242 !important;
-        --footerBG: #131519 !important;
-        --pageBG: #171a1f !important;
-        --playerBackground: #131519 !important;
-        --playerLCDBGFill: #131519 !important;
+  :root {
+      --primaryColor: #5865f2 !important;
+      --primaryColor-rgb: 88, 101, 242 !important;
+      --footerBG: #131519 !important;
+      --pageBG: #171a1f !important;
+      --playerBackground: #131519 !important;
+      --playerLCDBGFill: #131519 !important;
 
-        /* Glasstron */
-        --sidebarGlasstron: #13151957 !important;
+      /* Glasstron */
+      --sidebarGlasstron: #13151957 !important;
 
-        /* Standard */
-        --sidebarStandard: #131519 !important;
+      /* Standard */
+      --sidebarStandard: #131519 !important;
 
-        /* Set the Default Stuff */
-        --modalBGColor: var(--pageBG) !important;
-        --systemHeaderMaterialSover: var(--pageBG) !important;
-        --systemQuaternary: var(--pageBG-rgb) !important;
-        --selectionColor: var(--primaryColor) !important;
-    }
+      /* Set the Default Stuff */
+      --modalBGColor: var(--pageBG) !important;
+      --systemHeaderMaterialSover: var(--pageBG) !important;
+      --systemQuaternary: var(--pageBG-rgb) !important;
+      --selectionColor: var(--primaryColor) !important;
+  }
 
-    .web-chrome > div {
-        background-color: var(--playerBackground) !important;
-        backdrop-filter: saturate(0%) blur(25px) !important;
-    }
+  .web-chrome-drawer {
+    background-color: var(--sidebarGlasstron) !important;
+  }
 
-    .search-scope-bar {
-        background-color: var(--playerBackground) !important;
-        backdrop-filter: saturate(0%) blur(25px) !important;
-    }
+  .up-next__section {
+    background-color: var(--sidebarStandard) !important;
+  }
+
+  .web-chrome > div {
+      background-color: var(--playerBackground) !important;
+      backdrop-filter: saturate(0%) blur(25px) !important;
+  }
+
+  .search-scope-bar {
+      background-color: var(--playerBackground) !important;
+      backdrop-filter: saturate(0%) blur(25px) !important;
+  }
 }
