@@ -6,33 +6,27 @@
 
 @media (prefers-color-scheme:dark) {
     :root {
-        --primaryColor: #5865f2 !important;
-        --primaryColor-rgb: 88, 101, 242 !important;
+        /* accent colors */
+        --keyColor: #5865f2 !important;
+        --keyColor-rgb: 88, 101, 242 !important;
+        --systemAccentBG: #5865f2 !important;
+
+        /* main colors */
+        --sidebarGlasstron: #13151957 !important;
+        --sidebarStandard: #131519 !important;
         --footerBG: #131519 !important;
         --pageBG: #171a1f !important;
+
+        /* search bar */
+        --systemHeaderMaterialSover-default_IC: #131519 !important;
+        --systemHeaderMaterialSover: #131519 !important;
+
+        /* web-chrome */
         --playerBackground: #131519 !important;
         --playerLCDBGFill: #131519 !important;
 
-        /* Glasstron */
-        --sidebarGlasstron: #13151957 !important;
-
-        /* Standard */
-        --sidebarStandard: #131519 !important;
-
-        /* Set the Default Stuff */
-        --modalBGColor: var(--pageBG) !important;
-        --systemHeaderMaterialSover: var(--pageBG) !important;
-        --systemQuaternary: var(--pageBG-rgb) !important;
-        --selectionColor: var(--primaryColor) !important;
-    }
-
-    .web-chrome > div {
-        background-color: var(--playerBackground) !important;
-        backdrop-filter: saturate(0%) blur(25px) !important;
-    }
-
-    .search-scope-bar {
-        background-color: var(--playerBackground) !important;
-        backdrop-filter: saturate(0%) blur(25px) !important;
+        /* up-next */
+        --systemToolbarTitlebarMaterialSover-inactive: #131519 !important;
+        --systemToolbarTitlebarMaterialSover: rgba(19, 21, 25, 0.8) !important;
     }
 }
