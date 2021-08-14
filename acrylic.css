@@ -6,8 +6,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --sidebarGlasstron: rgba(0, 0, 0, 0) !important;
-        --sidebarStandard: #0c0c0c !important;
+        --sidebarTransparency: rgba(0, 0, 0, 0) !important;
+        --sidebar: #0c0c0c !important;
         --pageBG: rgba(0, 0, 0, 0) !important;
         --playerBackground: #00000047!important;
     }

@@ -10,10 +10,11 @@
         --keyColor: #5865f2 !important;
         --keyColor-rgb: 88, 101, 242 !important;
         --systemAccentBG: #5865f2 !important;
+        --systemAccentBG-pressed: #404eed !important;
 
         /* main colors */
-        --sidebarGlasstron: #13151957 !important;
-        --sidebarStandard: #131519 !important;
+        --sidebarTransparency: #13151957 !important;
+        --sidebar: #131519;
         --footerBG: #131519 !important;
         --pageBG: #171a1f !important;
 
