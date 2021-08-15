@@ -13,8 +13,8 @@
         --systemAccentBG-pressed: #404eed !important;
 
         /* main colors */
-        --sidebarTransparency: #13151957 !important;
-        --sidebar: #131519;
+        --transparency: #13151957 !important;
+        --sidebar: #131519 !important;
         --footerBG: #131519 !important;
         --pageBG: #171a1f !important;
 

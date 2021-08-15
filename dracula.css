@@ -19,7 +19,7 @@
     :root {
         --primaryColor: #bd93f9 !important;
         --sidebar: #21222c !important;
-        --sidebarTransparency: #21222c18 !important;
+        --transparency: #21222c18 !important;
         --footerBG: #44475a !important;
         --pageBG: #282a36 !important;
         --playerBackground: #21222c !important;

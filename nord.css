@@ -6,7 +6,7 @@
   :root {
     --primaryColor: #88C0D0 !important;
     --sidebar: #3B4252 !important;
-    --sidebarTransparency: #3B425257 !important;
+    --transparency: #3b425202 !important;
     --footerBG: #434C5E !important;
     --pageBG: #2E3440 !important;
     --playerBackground: #3B4252 !important;
@@ -40,7 +40,6 @@
   }
 
   body > div {
-    background-color: #2E3440 !important;
     color: #ECEFF4 !important;
   }
 

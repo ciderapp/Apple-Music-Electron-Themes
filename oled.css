@@ -6,7 +6,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --sidebarTransparency: rgba(0, 0, 0, 0) !important;
+        --transparency: #00000000 !important;
         --sidebar: #0c0c0c !important;
         --pageBG: rgb(0, 0, 0) !important;
         --playerBackground: #131313 !important;
