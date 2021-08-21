@@ -9,7 +9,9 @@
         --transparency: #0f0f0f00 !important;
         --sidebar: #0f0f0f00 !important;
         --pageBG: #0f0f0f00 !important;
-        --playerBackground: #0f0f0f00!important;
+        --playerBackground: #0f0f0f00 !important;
+        --systemHeaderMaterialSover-default_IC: #0f0f0f00 !important;
+        --systemHeaderMaterialSover: #0f0f0f00 !important;
     }
 
     .dt-search-box__input {
