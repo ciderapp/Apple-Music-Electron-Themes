@@ -4,6 +4,14 @@
 
 @media (prefers-color-scheme:dark) {
   :root {
+
+    /* accent colors */
+    --keyColor: #88c0d0 !important;
+    --keyColor-rgb: 136, 192, 208 !important;
+    --systemAccentBG: #88c0d0 !important;
+    --systemAccentBG-pressed: #81a1c1 !important;
+
+    /*everything else*/
     --primaryColor: #88C0D0 !important;
     --sidebar: #3B4252 !important;
     --transparency: #3b425202 !important;
