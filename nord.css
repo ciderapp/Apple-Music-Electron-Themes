@@ -10,6 +10,7 @@
     --keyColor-rgb: 136, 192, 208 !important;
     --systemAccentBG: #88c0d0 !important;
     --systemAccentBG-pressed: #81a1c1 !important;
+    --selectionColor: #81a1c1 !important;
 
     /*everything else*/
     --primaryColor: #88C0D0 !important;

@@ -11,6 +11,7 @@
       --keyColor-rgb: 30, 215, 96 !important;
       --systemAccentBG: #1DB954 !important;
       --systemAccentBG-pressed: #15853c !important;
+      --selectionColor: #1DB954 !important;
 
       /* main colors */
       --transparency: #0c0c0c57 !important;
