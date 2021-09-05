@@ -12,6 +12,9 @@
         --playerBackground: #0f0f0f00 !important;
         --systemHeaderMaterialSover-default_IC: #0f0f0f00 !important;
         --systemHeaderMaterialSover: #0f0f0f00 !important;
+        --playerLCDBGFill: transparent!important;
+        --playerLCDBGOuterStroke: transparent!important;
+        
     }
 
     .dt-search-box__input {
