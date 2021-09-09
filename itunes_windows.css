@@ -8,7 +8,7 @@
 
 /* Modern style overlay scrollbars */
 ::-webkit-scrollbar {
-    width: 24px;
+    width: 16px;
     height: 24px;
 }
 
@@ -22,16 +22,22 @@
 
 ::-webkit-scrollbar-thumb {
     background: transparent;
-    border: 10px solid transparent;
+    border: 6px solid transparent;
     box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
     border-radius: 16px;
-    min-height: 100px;
+    min-height: 64px;
+    transition: border 1s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border: 5px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 80%);
 }
 
 /* Will revert back to the standard theme if the window is less than 1000px */
 @media only screen and (min-width: 1000px) {
     body {
-        padding-top: 55px;
+        padding-top: 55px!important;
     }
 
     /* modify existing close, min, max buttons */
@@ -89,11 +95,11 @@
     }
 
     #web-navigation-container>div:first-child {
-        position: absolute;
-        top: 0px;
-        right: 0px;
+        position: absolute!important;
+        top: 0px!important;
+        right: 0px!important;
         padding: 0px !important;
-        z-index: 400;
+        z-index: 400!important;
     }
 
     #web-navigation-container>div:first-child>.dragDiv {
@@ -119,12 +125,12 @@
     }
 
     .web-chrome {
-        z-index: 100;
-        right: 0px;
-        top: 0px;
-        width: 100%;
-        position: absolute;
-        padding-right: 140px;
+        z-index: 100!important;
+        right: 0px!important;
+        top: 0px!important;
+        width: 100%!important;
+        position: absolute!important;
+        padding-right: 140px!important;
     }
 
     /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
@@ -157,15 +163,15 @@
     }
 
     .web-chrome__grid-container {
-        grid-template-columns: calc(26% - 22px) minmax(40%, 900px) calc(26% + 22px);
+        grid-template-columns: calc(26% - 22px) minmax(40%, 900px) calc(26% + 22px)!important;
     }
 
     div#web-main {
-        padding-top: 0px;
+        padding-top: 0px!important;
     }
 
     .web-navigation {
-        height: calc(100vh - 55px);
+        height: calc(100vh - 55px)!important;
     }
 
     #backButtonBar .button-area img {
@@ -191,21 +197,24 @@
 
     /* adjust radio station landing page */
     .station .page-container {
-        position: inherit;
+        position: inherit!important;
     }
 
     .page-container {
-        overflow-y: overlay;
+        overflow-y: overlay!important;
     }
 }
 
 @media (prefers-color-scheme: light) {
     ::-webkit-scrollbar-thumb {
         background: transparent;
-        border: 10px solid transparent;
+        border: 6px solid transparent;
         box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 50%);
-        border-radius: 16px;
-        min-height: 100px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        border: 5px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 80%);
     }
 
     #backButtonBar .button-area {
@@ -222,7 +231,7 @@
 
 @media (prefers-color-scheme: dark) {
     .web-chrome {
-        background: rgb(45 45 45 / 45%);
+        background: rgb(45 45 45 / 45%)!important;
     }
 
     :root {
