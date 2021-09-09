@@ -1,0 +1,169 @@
+/*
+ * @name iTunes Inspired
+ * @author https://github.com/booploops
+ * @author booploops#7139
+ * @description Theme inspired by iTunes in macOS High Sierra. Works in light and dark mode.
+*/
+
+/* Modern style overlay scrollbars */
+::-webkit-scrollbar {
+    width: 24px;
+    height: 24px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 10px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
+    border-radius: 16px;
+    min-height: 100px;
+}
+
+/* Will revert back to the standard theme if the window is less than 1000px */
+@media only screen and (min-width: 1000px) {
+    body {
+        padding-top: 55px;
+    }
+
+    /* modify existing close, min, max buttons */
+    span#red {
+        margin: 0px 0px 0px 2px !important;
+    }
+
+    span#yellow {
+        margin: 6px 10px !important;
+    }
+
+    span#green {
+        margin: 6px 0px !important;
+    }
+
+    #web-navigation-container>div:first-child {
+        position: absolute;
+        top: 0px;
+        left: 6px;
+        z-index: 400;
+    }
+
+    #web-navigation-container>div:first-child>.dragDiv {
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 8px;
+    }
+
+    .web-chrome-playback-controls>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome__grid-container {
+        grid-template-columns: calc(36% - 22px) minmax(40%, 900px) calc(24% + 22px);
+    }
+
+    .web-chrome-controls-container {
+        -webkit-app-region: drag;
+    }
+
+    .web-chrome-controls-container>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome-playback-lcd {
+        -webkit-app-region: no-drag !important;
+    }
+
+    .web-chrome {
+        z-index: 100;
+        right: 0px;
+        top: 0px;
+        width: 100%;
+        position: absolute;
+        background: transparent;
+    }
+
+    /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
+    .web-chrome:before {
+        -webkit-app-region: drag;
+        content: '';
+        width: calc(100% - 90px);
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .web-chrome:after {
+        -webkit-app-region: drag;
+        content: '';
+        width: 90px;
+        height: 10px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .web-chrome-playback-lcd__volume {
+        z-index: 1;
+    }
+
+    div#web-main {
+        padding-top: 0px;
+    }
+
+    .web-navigation {
+        height: calc(100vh - 55px);
+    }
+
+    #backButtonBar .button-area img {
+        width: 20px;
+        pointer-events: none;
+    }
+
+    #backButtonBar .button-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(72 72 72);
+        width: 32px;
+        height: 28px;
+        box-shadow: inset 0px 0px 0px 1px rgb(200 200 200 / 15%), 0px 0px 1px rgb(0 0 0 / 30%), 0px 1px 1px rgb(0 0 0 / 40%);
+        border-radius: 4px;
+    }
+
+    /* adjust the artist header overflowing because of the body padding adjustment */
+    body.has-js:not(.no-song-loaded) .artist-header--fixed,
+    body.has-js:not(.not-authenticated) .artist-header--fixed {
+        margin-top: 0px;
+    }
+
+    /* Enable overlay scrollbar, if scrollbars are enabled */
+    .page-container {
+        overflow-y: overlay;
+    }
+}
+
+/* Light theme only needs the overlay scrollbar darkened */
+@media (prefers-color-scheme: light) {
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+        border: 10px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 50%);
+        border-radius: 16px;
+        min-height: 100px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .web-chrome {
+        background: rgb(45 45 45 / 45%);
+    }
+}
