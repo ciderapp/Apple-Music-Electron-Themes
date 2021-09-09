@@ -192,7 +192,7 @@
 
     body.has-js:not(.no-song-loaded) .artist-header--fixed,
     body.has-js:not(.not-authenticated) .artist-header--fixed {
-        margin-top: 0px;
+        margin-top: 0px!important;
     }
 
     /* adjust radio station landing page */
