@@ -165,6 +165,10 @@
         border-radius: 16px;
         min-height: 100px;
     }
+
+    #backButtonBar .button-area {
+        background: rgb(245 245 245);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
