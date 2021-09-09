@@ -144,6 +144,11 @@
     body.has-js:not(.not-authenticated) .artist-header--fixed {
         margin-top: 0px;
     }
+    
+    /* adjust radio station landing page */
+    .station .page-container {
+        position: inherit;
+    }
 
     /* Enable overlay scrollbar, if scrollbars are enabled */
     .page-container {
