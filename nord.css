@@ -1,6 +1,8 @@
-/* Nord theme: https://www.nordtheme.com
- * Base CSS from: floookay's Dracular theme
- */
+/**
+ * @name Nord
+ * @author https://github.com/VGHS-lucaruby
+ * @description Nord theme: https://www.nordtheme.com | Base CSS from: floookay's Dracular theme
+*/
 
 @media (prefers-color-scheme:dark) {
   :root {
