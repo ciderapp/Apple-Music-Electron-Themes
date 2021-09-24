@@ -37,10 +37,10 @@
 /* Will revert back to the standard theme if the window is less than 1000px */
 @media only screen and (min-width: 1000px) {
     body {
-        padding-top: 55px!important;
+        padding-top: 55px !important;
     }
 
-    /* modify existing close, min, max buttons */
+    /* Modify macOS emulation buttons */
     span#red,
     span#yellow,
     span#green {
@@ -95,11 +95,11 @@
     }
 
     #web-navigation-container>div:first-child {
-        position: absolute!important;
-        top: 0px!important;
-        right: 0px!important;
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
         padding: 0px !important;
-        z-index: 400!important;
+        z-index: 400 !important;
     }
 
     #web-navigation-container>div:first-child>.dragDiv {
@@ -125,19 +125,20 @@
     }
 
     .web-chrome {
-        z-index: 100!important;
-        right: 0px!important;
-        top: 0px!important;
-        width: 100%!important;
-        position: absolute!important;
-        padding-right: 140px!important;
+        z-index: 100 !important;
+        left: 0px !important;
+        top: 0px !important;
+        width: 100% !important;
+        position: absolute !important;
+        padding-right: 140px !important;
     }
 
     /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
     .web-chrome:before {
         -webkit-app-region: drag;
         content: '';
-        width: calc(100% - 135px);
+        clip-path: polygon(0% 0%, 0% 100%, 896px calc(100% - 28px), 896px 0%, 100% 0px, 100% calc(100% - 28px), 0px 28px, 0 100%, 100% 100%, 100% 0%);
+        width: 100%;
         height: 100%;
         position: absolute;
         left: 0;
@@ -145,13 +146,13 @@
     }
 
     .web-chrome:after {
-        -webkit-app-region: drag;
+        -webkit-app-region: no-drag;
         content: '';
         width: 135px;
         height: 28px;
         position: absolute;
         right: 0;
-        bottom: 0;
+        top: 0;
     }
 
     nav#web-navigation-container {
@@ -163,15 +164,15 @@
     }
 
     .web-chrome__grid-container {
-        grid-template-columns: calc(26% - 22px) minmax(40%, 900px) calc(26% + 22px)!important;
+        grid-template-columns: calc(26% - 22px) minmax(40%, 900px) calc(26% + 22px) !important;
     }
 
     div#web-main {
-        padding-top: 0px!important;
+        padding-top: 0px !important;
     }
 
     .web-navigation {
-        height: calc(100vh - 55px)!important;
+        height: calc(100vh - 55px) !important;
     }
 
     #backButtonBar .button-area img {
@@ -192,16 +193,46 @@
 
     body.has-js:not(.no-song-loaded) .artist-header--fixed,
     body.has-js:not(.not-authenticated) .artist-header--fixed {
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
 
     /* adjust radio station landing page */
     .station .page-container {
-        position: inherit!important;
+        position: inherit !important;
     }
 
     .page-container {
-        overflow-y: overlay!important;
+        overflow-y: overlay !important;
+    }
+
+    .web-main-drag {
+        -webkit-app-region: unset !important;
+        width: 0px;
+        display: none;
+    }
+
+    /* Disable some of the properties on the built in frame */
+    .web-nav-window-controls {
+        background: transparent;
+        height: 28px !important;
+        -webkit-app-region: no-drag !important;
+        z-index: 999;
+        box-shadow: unset;
+        backdrop-filter: unset;
+    }
+
+    .web-main-drag {
+        display: none;
+    }
+
+    /* Fix for sidebar grid */
+    .web-navigation__navigation-container {
+        grid-template-rows: 0px auto 1fr auto !important;
+    }
+
+    /* Set context menu to no-drag */
+    .context-menu {
+        -webkit-app-region: no-drag !important;
     }
 }
 
@@ -231,7 +262,7 @@
 
 @media (prefers-color-scheme: dark) {
     .web-chrome {
-        background: rgb(45 45 45 / 45%)!important;
+        background: rgb(45 45 45 / 45%) !important;
     }
 
     :root {
