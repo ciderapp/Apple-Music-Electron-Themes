@@ -40,7 +40,7 @@
         padding-top: 55px !important;
     }
 
-    /* Modify macOS emulation buttons */
+    /* note: REMOVE AFTER 2.5.1 IS RELEASED */
     span#red,
     span#yellow,
     span#green {
@@ -105,6 +105,77 @@
     #web-navigation-container>div:first-child>.dragDiv {
         display: flex;
     }
+
+    /*  */
+
+    /* Modify macOS emulation buttons */
+    .web-nav-window-controls-outer {
+        width: 135px !important;
+    }
+
+    .web-nav-window-controls {
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
+        padding: 0px !important;
+        z-index: 400 !important;
+        width: 135px !important;
+    }
+
+    .web-chrome-window-controls {
+        right: 1px !important;
+    }
+
+    /* :not(.web-chrome-window-controls) Only apply if default frame is not enabled */
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
+        width: 45px !important;
+        height: 28px !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-minBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-maxBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close {
+        order: 2;
+        margin: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-closeBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0px 1px 0px 0px !important;
+        border-radius: 0px !important;
+        width: 46px !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close:hover {
+        background-color: rgb(196, 43, 28) !important;
+        filter: unset !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize:hover,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize:hover {
+        background-color: rgb(200 200 200 / 10%) !important;
+        filter: unset !important;
+    }
+
 
     .web-chrome-controls-container {
         z-index: 1;
@@ -233,6 +304,11 @@
     /* Set context menu to no-drag */
     .context-menu {
         -webkit-app-region: no-drag !important;
+    }
+
+    form#web-navigation-search-box {
+        margin-top: 0px !important;
+        grid-area: search !important;
     }
 }
 

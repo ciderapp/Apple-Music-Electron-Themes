@@ -1,5 +1,5 @@
 /*
- * @name iTunes Inspired
+ * @name iTunes Inspired (macOS Style)
  * @author https://github.com/booploops
  * @author booploops#7139
  * @description Theme inspired by iTunes in macOS High Sierra. Works in light and dark mode.
@@ -36,7 +36,41 @@
 /* Will revert back to the standard theme if the window is less than 1000px */
 @media only screen and (min-width: 1000px) {
 
-    /* Modify AME window frame to match macOS */
+
+    /* note: REMOVE AFTER 2.1.5 is released */
+    span#red {
+        margin: 0px 0px 0px 2px !important;
+    }
+
+    span#yellow {
+        margin: 6px 10px !important;
+    }
+
+    span#green {
+        margin: 6px 0px !important;
+    }
+
+    #web-navigation-container>div:first-child {
+        position: absolute !important;
+        top: 0px !important;
+        left: 6px !important;
+        z-index: 400 !important;
+    }
+
+    #web-navigation-container>div:first-child>.dragDiv {
+        display: flex !important;
+        height: 50px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: 8px !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close {
+        margin: auto 4px!important;
+    }
+    /*  */
+
+    /* Modify AME window frame */
     .web-nav-window-controls.web-chrome-window-controls {
         left: 20px;
         top: 16px;
@@ -82,7 +116,7 @@
         display: inline-block;
         left: 0px;
         top: 0px;
-        margin: 6px 10px;
+        margin: 6px 8px;
         color: rgb(130, 0, 5);
         -webkit-app-region: no-drag;
     }
@@ -113,33 +147,24 @@
     }
 
     /* modify existing close, min, max buttons */
-    span#red {
-        margin: 0px 0px 0px 2px !important;
-    }
-
-    span#yellow {
-        margin: 6px 10px !important;
-    }
-
-    span#green {
-        margin: 6px 0px !important;
-    }
-
-    #web-navigation-container>div:first-child {
+    /* macOS Emu */
+    .web-nav-window-controls-outer {
         position: absolute !important;
         top: 0px !important;
-        left: 6px !important;
+        left: 0px !important;
+        width: 90px!important;
+        padding:0px!important;
+        justify-content: center;
+        display: flex;
+        align-items: center;
         z-index: 400 !important;
     }
 
-    #web-navigation-container>div:first-child>.dragDiv {
-        display: flex !important;
-        height: 50px !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-left: 8px !important;
+    .web-nav-window-controls {
+        padding:0px!important;
+        justify-content:center;
     }
-
+    
     .web-chrome-playback-controls>* {
         -webkit-app-region: no-drag;
     }
@@ -239,9 +264,13 @@
         grid-template-rows: 0px auto 1fr auto !important;
     }
 
-    /* Set context menu to no-drag */
     .context-menu {
         -webkit-app-region: no-drag !important;
+    }
+
+    form#web-navigation-search-box {
+        margin-top: 0px!important;
+        grid-area: search!important;
     }
 }
 
