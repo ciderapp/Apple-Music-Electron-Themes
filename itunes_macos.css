@@ -1,5 +1,5 @@
 /*
- * @name iTunes Inspired
+ * @name iTunes Inspired (macOS Style)
  * @author https://github.com/booploops
  * @author booploops#7139
  * @description Theme inspired by iTunes in macOS High Sierra. Works in light and dark mode.
@@ -35,11 +35,9 @@
 
 /* Will revert back to the standard theme if the window is less than 1000px */
 @media only screen and (min-width: 1000px) {
-    body {
-        padding-top: 55px!important;
-    }
 
-    /* modify existing close, min, max buttons */
+
+    /* note: REMOVE AFTER 2.1.5 is released */
     span#red {
         margin: 0px 0px 0px 2px !important;
     }
@@ -53,26 +51,126 @@
     }
 
     #web-navigation-container>div:first-child {
-        position: absolute!important;
-        top: 0px!important;
-        left: 6px!important;
-        z-index: 400!important;
+        position: absolute !important;
+        top: 0px !important;
+        left: 6px !important;
+        z-index: 400 !important;
     }
 
     #web-navigation-container>div:first-child>.dragDiv {
-        display: flex!important;
-        height: 50px!important;
-        justify-content: center!important;
-        align-items: center!important;
-        margin-left: 8px!important;
+        display: flex !important;
+        height: 50px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: 8px !important;
     }
 
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close {
+        margin: auto 4px!important;
+    }
+    /*  */
+
+    /* Modify AME window frame */
+    .web-nav-window-controls.web-chrome-window-controls {
+        left: 20px;
+        top: 16px;
+        right: unset;
+        display: flex;
+        box-shadow: unset !important;
+        backdrop-filter: unset !important;
+        background: transparent !important;
+    }
+
+    .web-nav-window-controls {
+        background: transparent;
+        height: 28px !important;
+        -webkit-app-region: no-drag !important;
+        z-index: 999;
+        box-shadow: unset;
+        backdrop-filter: unset;
+    }
+
+    .web-main-drag {
+        display: none;
+    }
+
+    #close {
+        height: 12px !important;
+        width: 12px !important;
+        background: rgb(255, 92, 92) !important;
+        border-radius: 50%;
+        display: inline-block;
+        left: 0px;
+        top: 0px;
+        margin: 6px 0px;
+        color: rgb(130, 0, 5);
+        -webkit-app-region: no-drag;
+    }
+
+    #minimize {
+        order: 1;
+        height: 12px !important;
+        width: 12px !important;
+        background: rgb(255, 189, 76) !important;
+        border-radius: 50%;
+        display: inline-block;
+        left: 0px;
+        top: 0px;
+        margin: 6px 8px;
+        color: rgb(130, 0, 5);
+        -webkit-app-region: no-drag;
+    }
+
+    #maximize {
+        order: 2;
+        height: 12px !important;
+        width: 12px !important;
+        background: rgb(0, 202, 86) !important;
+        border-radius: 50%;
+        display: inline-block;
+        left: 0px;
+        top: 0px;
+        margin: 6px 0px;
+        color: rgb(130, 0, 5);
+        -webkit-app-region: no-drag;
+    }
+
+    #close:hover,
+    #minimize:hover,
+    #maximize:hover {
+        filter: brightness(40%);
+    }
+
+    /* End */
+    body {
+        padding-top: 55px !important;
+    }
+
+    /* modify existing close, min, max buttons */
+    /* macOS Emu */
+    .web-nav-window-controls-outer {
+        position: absolute !important;
+        top: 0px !important;
+        left: 0px !important;
+        width: 90px!important;
+        padding:0px!important;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        z-index: 400 !important;
+    }
+
+    .web-nav-window-controls {
+        padding:0px!important;
+        justify-content:center;
+    }
+    
     .web-chrome-playback-controls>* {
         -webkit-app-region: no-drag;
     }
 
     .web-chrome__grid-container {
-        grid-template-columns: calc(36% - 22px) minmax(40%, 900px) calc(24% + 22px)!important;
+        grid-template-columns: calc(36% - 22px) minmax(40%, 900px) calc(24% + 22px) !important;
     }
 
     .web-chrome-controls-container {
@@ -88,12 +186,12 @@
     }
 
     .web-chrome {
-        z-index: 100!important;
-        right: 0px!important;
-        top: 0px!important;
-        width: 100%!important;
-        position: absolute!important;
-        background: transparent!important;
+        z-index: 100 !important;
+        left: 0px !important;
+        top: 0px !important;
+        width: 100% !important;
+        position: absolute !important;
+        background: transparent !important;
     }
 
     /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
@@ -108,13 +206,13 @@
     }
 
     .web-chrome:after {
-        -webkit-app-region: drag;
+        -webkit-app-region: no-drag;
         content: '';
-        width: 90px;
-        height: 10px;
+        width: 64px;
+        height: 22px;
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 16px;
+        top: 16px;
     }
 
     .web-chrome-playback-lcd__volume {
@@ -122,11 +220,11 @@
     }
 
     div#web-main {
-        padding-top: 0px!important;
+        padding-top: 0px !important;
     }
 
     .web-navigation {
-        height: calc(100vh - 55px)!important;
+        height: calc(100vh - 55px) !important;
     }
 
     #backButtonBar .button-area img {
@@ -148,17 +246,31 @@
     /* adjust the artist header overflowing because of the body padding adjustment */
     body.has-js:not(.no-song-loaded) .artist-header--fixed,
     body.has-js:not(.not-authenticated) .artist-header--fixed {
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
-    
+
     /* adjust radio station landing page */
     .station .page-container {
-        position: inherit!important;
+        position: inherit !important;
     }
 
     /* Enable overlay scrollbar, if scrollbars are enabled */
     .page-container {
-        overflow-y: overlay!important;
+        overflow-y: overlay !important;
+    }
+
+    /* Fix for sidebar grid */
+    .web-navigation__navigation-container {
+        grid-template-rows: 0px auto 1fr auto !important;
+    }
+
+    .context-menu {
+        -webkit-app-region: no-drag !important;
+    }
+
+    form#web-navigation-search-box {
+        margin-top: 0px!important;
+        grid-area: search!important;
     }
 }
 
@@ -182,6 +294,6 @@
 
 @media (prefers-color-scheme: dark) {
     .web-chrome {
-        background: rgb(45 45 45 / 45%)!important;
+        background: rgb(45 45 45 / 45%) !important;
     }
 }
