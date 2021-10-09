@@ -1,0 +1,684 @@
+/*
+ * @name Eleven
+ * @author https://github.com/booploops
+ * @author booploops#7139
+ * @description WinUI inspired theme
+*/
+:root {
+    --appleEase: cubic-bezier(.42, 0, .58, 1);
+    --appleTransition: .2s var(--appleEase);
+    --sysFontDisplay: "Segoe UI Variable Display", system-ui;
+    --sysFontText: "Segoe UI Variable Text", system-ui;
+}
+
+body {
+    font-family: var(--sysFontDisplay);
+}
+
+body::before {
+    background: var(--musicKit-artwork-64);
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px) saturate(180%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0.32;
+}
+
+.am-wordmark {
+    font-family: "SF Pro";
+}
+
+/* Modern style overlay scrollbars */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 24px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 6px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
+    border-radius: 16px;
+    min-height: 64px;
+    transition: border 1s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border: 5px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 80%);
+}
+
+/* Will revert back to the standard theme if the window is less than 1000px */
+@media only screen and (min-width: 525px) {
+    body {
+        padding-top: 55px !important;
+    }
+
+    button.button-reset.web-chrome-playback-controls__playback-btn {
+        border-radius: 4px;
+        padding: 5px;
+        display: inline-flex;
+        align-items: center;
+        margin: 4px;
+        cursor: default;
+    }
+
+    .web-chrome-playback-controls__secondary-btn,
+    button.button-reset.web-chrome-playback-controls__playback-btn {
+        transition: .1s var(--appleEase);
+    }
+
+    .web-chrome-playback-controls__secondary-btn:hover,
+    button.button-reset.web-chrome-playback-controls__playback-btn:hover {
+        background: var(--sidebarSelectedState);
+        cursor: default;
+    }
+
+    .web-chrome-playback-controls__secondary-btn:active,
+    button.button-reset.web-chrome-playback-controls__playback-btn:active {
+        transform: scale(0.86);
+        background: transparent;
+        transition: .01s var(--appleEase);
+    }
+
+    /* note: REMOVE AFTER 2.5.1 IS RELEASED */
+    span#red,
+    span#yellow,
+    span#green {
+        transition: background .2s;
+    }
+
+    span#red {
+        margin: 0px 1px 0px 0px !important;
+        border-radius: 0px !important;
+        order: 1;
+        width: 46px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-closeBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    span#red:hover {
+        background-color: rgb(196, 43, 28) !important;
+        filter: unset !important;
+    }
+
+    span#yellow {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        width: 45px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-minBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    span#yellow:hover,
+    span#green:hover {
+        background-color: rgb(200 200 200 / 10%) !important;
+        filter: unset !important;
+    }
+
+    span#green {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        width: 45px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-maxBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #web-navigation-container>div:first-child {
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
+        padding: 0px !important;
+        z-index: 400 !important;
+    }
+
+    #web-navigation-container>div:first-child>.dragDiv {
+        display: flex;
+    }
+
+    /*  */
+    /* Modify macOS emulation buttons */
+    .web-nav-window-controls-outer {
+        width: 135px !important;
+    }
+
+    .web-nav-window-controls {
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
+        padding: 0px !important;
+        z-index: 400 !important;
+        width: 135px !important;
+    }
+
+    .web-chrome-window-controls {
+        right: 1px !important;
+    }
+
+    span#minimize {
+        height: 32px !important;
+    }
+
+    span#close {
+        height: 32px !important;
+    }
+
+    span#maximize {
+        height: 40px;
+        height: 32px !important;
+    }
+
+    /* :not(.web-chrome-window-controls) Only apply if default frame is not enabled */
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
+        width: 45px !important;
+        height: 28px !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-minBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-maxBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close {
+        order: 2;
+        margin: 0px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-closeBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0px 1px 0px 0px !important;
+        border-radius: 0px !important;
+        width: 46px !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #close:hover {
+        background-color: rgb(196, 43, 28) !important;
+        filter: unset !important;
+    }
+
+    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize:hover,
+    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize:hover {
+        background-color: rgb(200 200 200 / 10%) !important;
+        filter: unset !important;
+    }
+
+    .web-chrome-controls-container {
+        z-index: 1;
+        -webkit-app-region: drag;
+    }
+
+    /* add no-drag to child elements */
+    .web-chrome-playback-controls>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome-controls-container>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome-playback-lcd {
+        -webkit-app-region: no-drag !important;
+    }
+
+    .web-chrome {
+        z-index: 100 !important;
+        left: 0px !important;
+        top: 0px !important;
+        width: 100% !important;
+        position: absolute !important;
+        padding-right: 140px !important;
+        text-align: center !important;
+        display: flex !important;
+        box-shadow: unset !important;
+        background: transparent !important;
+        backdrop-filter: unset;
+    }
+
+    /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
+    @media only screen and (min-width: 1000px) {
+        .web-chrome:before {
+            -webkit-app-region: drag;
+            content: '';
+            width: 80px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            image-rendering: -webkit-optimize-contrast;
+            background-image: url(https://beta.music.apple.com/assets/favicon/favicon-16-5288c200803434492204a46856ba709b.png);
+            background-position: left 20px center;
+            background-size: 16px;
+            background-repeat: no-repeat;
+            content: "Apple Music";
+            display: flex;
+            align-items: center;
+            padding-left: 55px;
+            font-size: 12px;
+        }
+    }
+
+    .web-chrome:after {
+        -webkit-app-region: no-drag;
+        content: '';
+        width: 135px;
+        height: 28px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    nav#web-navigation-container {
+        margin-top: 0px;
+    }
+
+    .web-chrome-playback-lcd__volume {
+        z-index: 1;
+    }
+
+    .web-chrome__grid-container {
+        grid-template-columns: calc(30% - 22px) minmax(40%, 900px) calc(30% + 22px) !important;
+        width: 77% !important;
+        margin: 0 auto !important;
+        z-index: 99999 !important;
+        POSITION: ABSOLUTE !important;
+        height: 100% !important;
+        right: 136px !important;
+    }
+
+    button.button-reset.web-chrome-playback-controls__playback-btn>svg {
+        margin: 0px;
+    }
+
+    span.web-chrome-playback-lcd__contextual-badge.web-chrome-playback-lcd__contextual-badge--non-marquee {
+        background: transparent !important;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item>a {
+        cursor: default;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item {
+        transition: all .2s var(--appleEase);
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item:hover {
+        background: var(--sidebarSelectedState);
+        transition: all .2s var(--appleEase);
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected {
+        padding-left: 8px;
+        position: relative;
+        transition: all .2s var(--appleEase);
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item {
+        position: relative;
+        transition: all .2s var(--appleEase);
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item::after {
+        background: var(--keyColor);
+        width: 4px;
+        border-radius: 10px;
+        height: 16px;
+        transform: scaleY(0);
+        position: absolute;
+        content: '';
+        top: 8px;
+        left: 0;
+        pointer-events: none;
+        transition: all .2s var(--appleEase);
+        opacity: 0;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected::after {
+        background: var(--keyColor);
+        width: 4px;
+        border-radius: 10px;
+        height: 16px;
+        position: absolute;
+        transform: scaleY(1);
+        content: '';
+        top: 8px;
+        left: 0;
+        pointer-events: none;
+        transition: all .2s var(--appleEase);
+        opacity: 1;
+    }
+
+    #web-main {
+        padding-top: 0px !important;
+        border-radius: 10px 0px 0px 0px;
+        /* background: transparent!important;
+        border-left: 1px solid var(--sidebarBorderRule);
+        border-top: 1px solid var(--sidebarBorderRule); */
+        background: rgb(200 200 200 / 5%) !important;
+        border-left: 1px solid rgb(0 0 0 / 25%) !important;
+        border-top: 1px solid rgb(0 0 0 / 25%) !important;
+    }
+
+    nav#web-navigation-container {
+        border: 0px !important;
+        background: transparent !important;
+    }
+
+    .web-navigation {
+        border: 0 !important;
+        height: calc(100vh - 55px) !important;
+    }
+
+    #backButtonBar .button-area img {
+        width: 20px;
+        pointer-events: none;
+    }
+
+    #backButtonBar .button-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(72 72 72);
+        width: 32px;
+        height: 28px;
+        box-shadow: inset 0px 0px 0px 1px rgb(200 200 200 / 15%), 0px 0px 1px rgb(0 0 0 / 30%), 0px 1px 1px rgb(0 0 0 / 40%);
+        border-radius: 4px;
+    }
+
+    body.has-js:not(.no-song-loaded) .artist-header--fixed,
+    body.has-js:not(.not-authenticated) .artist-header--fixed {
+        margin-top: 0px !important;
+    }
+
+    /* adjust radio station landing page */
+    .station .page-container {
+        position: inherit !important;
+    }
+
+    .page-container {
+        overflow-y: overlay !important;
+    }
+
+    .web-main-drag {
+        -webkit-app-region: unset !important;
+        width: 0px;
+        display: none;
+    }
+
+    /* Disable some of the properties on the built in frame */
+    .web-nav-window-controls {
+        background: transparent;
+        height: 32px !important;
+        -webkit-app-region: no-drag !important;
+        z-index: 999;
+        box-shadow: unset;
+        backdrop-filter: unset;
+    }
+
+    .lockup {
+        transition: all var(--appleTransition);
+        position: relative;
+    }
+
+    .lockup:hover {
+        transform: translateY(-2px);
+    }
+
+    .lockup::before {
+        transition: all var(--appleTransition);
+        content: '';
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center;
+        transform: scale(1.06);
+        border-radius: 10px !important;
+        pointer-events: none;
+        z-index: -1;
+        box-shadow: unset;
+    }
+
+    .lockup:hover::before {
+        transition: all var(--appleTransition);
+        background: var(--sidebarSelectedState);
+        content: '';
+        border-radius: 10px;
+        transform: scale(1.06);
+        box-shadow: 0px 4px 6px 2px rgb(0 0 0 / 10%);
+    }
+
+    @keyframes contextIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .context-menu {
+        padding: 10px;
+        animation: contextIn .1s var(--appleEase);
+    }
+
+    li.context-menu__option {
+        border: 0px !important;
+        border-radius: 4px;
+        font-size: 1.14em;
+        font-weight: normal;
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb {
+        transition: all var(--appleTransition);
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb:hover {
+        background-image: radial-gradient(var(--keyColor) 2px, transparent 3px, transparent 10px);
+        transform: scale(1.2);
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb:active {
+        background-image: radial-gradient(var(--keyColor) 3px, transparent 4px, transparent 10px);
+        transform: scale(1);
+    }
+
+    @keyframes pageLoad {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .loading-inner>.loading-inner>div {
+        animation: var(--appleTransition) pageLoad;
+    }
+
+    .view-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .view-loading::after {
+        width: 32px;
+        height: 32px;
+        content: ' ';
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: var(--keyColor) transparent var(--keyColor) transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+        font-family: "SF Pro";
+        margin-top: 8em;
+    }
+
+    .view-loading::before {
+        content: ' Music';
+        position: absolute;
+        font-family: "SF Pro";
+        font-size: 2em;
+        margin-top: -2em;
+    }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    input.search-box__input.dt-search-box__input {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(0 0 0 / 25%);
+        font-family: var(--sysFontDisplay);
+        font-size: 1.14em;
+        padding-top: 5px;
+        padding-left: 30px;
+        opacity: 1 !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        input.search-box__input.dt-search-box__input {
+            background: rgb(200 200 200 / 6%);
+        }
+    }
+
+    button.shuffle-button.action-button.typography-body-semibold-tall.button-reset {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(0 0 0 / 25%);
+    }
+
+    button.action-button.play-button {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(0 0 0 / 25%);
+    }
+
+    .web-chrome-playback-lcd__artwork-container {
+        border-radius: 4px !important;
+        overflow: hidden !important;
+        margin-right: 4px !important;
+    }
+
+    .web-chrome-playback-lcd__artwork-container::after {
+        box-shadow: inset 0px 0px 0px 1px rgb(200 200 200 / 16%) !important;
+        border-radius: 4px !important;
+        content: '' !important;
+    }
+
+    .web-chrome-playback-lcd {
+        background: transparent !important;
+        box-shadow: unset !important;
+        font-weight: 600 !important;
+    }
+
+    span.badge.explicit.default {
+        background: transparent !important;
+    }
+
+    .web-main-drag {
+        display: none;
+    }
+
+    /* Fix for sidebar grid */
+    .web-navigation__navigation-container {
+        grid-template-rows: 0px auto 1fr auto !important;
+    }
+
+    /* Set context menu to no-drag */
+    .context-menu {
+        -webkit-app-region: no-drag !important;
+    }
+
+    form#web-navigation-search-box {
+        margin-top: 0px !important;
+        grid-area: search !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+        border: 6px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 50%);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        border: 5px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 80%);
+    }
+
+    #backButtonBar .button-area {
+        background: rgb(245 245 245);
+    }
+
+    :root {
+        /* Title bar icons from https://github.com/binaryfunt/electron-seamless-titlebar-tutorial/tree/master/src/icons */
+        /* --gfx-closeBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAaxaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPg0KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPg0KICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMDItMTdUMTI6NDQ6NTBaIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTAyLTE3VDEyOjQ0OjUwWiIgeG1wOk1vZGlmeURhdGU9IjIwMjAtMDItMTdUMTI6NDQ6NTBaIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjgxMmQ0OGRhLTY2Y2QtODE0YS05YmUzLTM0NzM0MmY5YWRiOSIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjk3M2VlMzBkLWM4MjgtMTA0ZS05NTk2LTA2NzI3ODE4ODVmMyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjkwOTU2NjhmLTU2YmEtZTc0Ni1hMmRkLTI4MjY3N2NiMWI0YSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciPg0KICAgICAgPHhtcE1NOkhpc3Rvcnk+DQogICAgICAgIDxyZGY6U2VxPg0KICAgICAgICAgIDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjkwOTU2NjhmLTU2YmEtZTc0Ni1hMmRkLTI4MjY3N2NiMWI0YSIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMjo0NDo1MFoiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgLz4NCiAgICAgICAgICA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ODEyZDQ4ZGEtNjZjZC04MTRhLTliZTMtMzQ3MzQyZjlhZGI5IiBzdEV2dDp3aGVuPSIyMDIwLTAyLTE3VDEyOjQ0OjUwWiIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIiAvPg0KICAgICAgICA8L3JkZjpTZXE+DQogICAgICA8L3htcE1NOkhpc3Rvcnk+DQogICAgICA8cGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgICAgIDxyZGY6QmFnPg0KICAgICAgICAgIDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7qK7IiBwaG90b3Nob3A6TGF5ZXJUZXh0PSLuorsiIC8+DQogICAgICAgIDwvcmRmOkJhZz4NCiAgICAgIDwvcGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgPC9yZGY6RGVzY3JpcHRpb24+DQogIDwvcmRmOlJERj4NCjwveDp4bXBtZXRhPg0KPD94cGFja2V0IGVuZD0iciI/PrHjeh4AAABGSURBVChTYwCC3UBsDGLgACA5kBow4x2URgcYctgUYxMDA2QJnIpgAKYAQxETlCYJIFuHzEYB2CQwxLApggEUOSICnGE3AJ3/Fe3UumzuAAAAAElFTkSuQmCC');
+        --gfx-maxBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAaxaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPg0KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPg0KICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMDItMTdUMTI6NTU6MzdaIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTAyLTE3VDEyOjU1OjM3WiIgeG1wOk1vZGlmeURhdGU9IjIwMjAtMDItMTdUMTI6NTU6MzdaIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY5MzMyOWNhLWNkNjctMzY0Zi04MzU1LTY5N2ZmYzI0ZDdlZCIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmU5OTljNjVmLTQ4YTktMDY0Mi1iNjE5LWZiZWExMTJlMThmYiIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjgyZjQwYmU3LTE0YzItZjc0Ni1hZmE1LWQxYmIxNzAyMjM4OCIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciPg0KICAgICAgPHhtcE1NOkhpc3Rvcnk+DQogICAgICAgIDxyZGY6U2VxPg0KICAgICAgICAgIDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjgyZjQwYmU3LTE0YzItZjc0Ni1hZmE1LWQxYmIxNzAyMjM4OCIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMjo1NTozN1oiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgLz4NCiAgICAgICAgICA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6NjkzMzI5Y2EtY2Q2Ny0zNjRmLTgzNTUtNjk3ZmZjMjRkN2VkIiBzdEV2dDp3aGVuPSIyMDIwLTAyLTE3VDEyOjU1OjM3WiIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIiAvPg0KICAgICAgICA8L3JkZjpTZXE+DQogICAgICA8L3htcE1NOkhpc3Rvcnk+DQogICAgICA8cGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgICAgIDxyZGY6QmFnPg0KICAgICAgICAgIDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7qSiIiBwaG90b3Nob3A6TGF5ZXJUZXh0PSLupKIiIC8+DQogICAgICAgIDwvcmRmOkJhZz4NCiAgICAgIDwvcGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgPC9yZGY6RGVzY3JpcHRpb24+DQogIDwvcmRmOlJERj4NCjwveDp4bXBtZXRhPg0KPD94cGFja2V0IGVuZD0iciI/Pg0D+eEAAAAgSURBVChTY2RgYPgPxEQBYhT+Z4IyCIKRqZDIAGdgAAB7XgQNYlv0ggAAAABJRU5ErkJggg==');
+        --gfx-minBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAaxaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPg0KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPg0KICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMDItMTdUMTM6MDA6MzJaIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTAyLTE3VDEzOjAwOjMyWiIgeG1wOk1vZGlmeURhdGU9IjIwMjAtMDItMTdUMTM6MDA6MzJaIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg1ZDBlZGIwLWZkMDAtYjY0Zi05ZWZiLWEyYjQ1ODcwNWE4YSIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmEzMDAxZTFhLTI5MTktZTQ0OS1iOTRjLWMyMTIyNDhhOWY4YSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjc4N2Y3OTljLTRiMTEtZTU0YS1iMjBkLTY4NjE3ZWQ5YzVlMiIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciPg0KICAgICAgPHhtcE1NOkhpc3Rvcnk+DQogICAgICAgIDxyZGY6U2VxPg0KICAgICAgICAgIDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjc4N2Y3OTljLTRiMTEtZTU0YS1iMjBkLTY4NjE3ZWQ5YzVlMiIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMzowMDozMloiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgLz4NCiAgICAgICAgICA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ODVkMGVkYjAtZmQwMC1iNjRmLTllZmItYTJiNDU4NzA1YThhIiBzdEV2dDp3aGVuPSIyMDIwLTAyLTE3VDEzOjAwOjMyWiIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIiAvPg0KICAgICAgICA8L3JkZjpTZXE+DQogICAgICA8L3htcE1NOkhpc3Rvcnk+DQogICAgICA8cGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgICAgIDxyZGY6QmFnPg0KICAgICAgICAgIDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7qShIiBwaG90b3Nob3A6TGF5ZXJUZXh0PSLupKEiIC8+DQogICAgICAgIDwvcmRmOkJhZz4NCiAgICAgIDwvcGhvdG9zaG9wOlRleHRMYXllcnM+DQogICAgPC9yZGY6RGVzY3JpcHRpb24+DQogIDwvcmRmOlJERj4NCjwveDp4bXBtZXRhPg0KPD94cGFja2V0IGVuZD0iciI/PmeGdrgAAAAVSURBVChTYxhOgBGI/0OYQx0wMAAAyp4BAZ26NiYAAAAASUVORK5CYII='); */
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Title bar icons from https://github.com/binaryfunt/electron-seamless-titlebar-tutorial/tree/master/src/icons */
+        /* --gfx-closeBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAGOmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTAyLTE3VDEyOjQ0OjUwWiIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wMi0xN1QxMjo0NDo1MFoiIHhtcDpNb2RpZnlEYXRlPSIyMDIwLTAyLTE3VDEyOjQ0OjUwWiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4MTJkNDhkYS02NmNkLTgxNGEtOWJlMy0zNDczNDJmOWFkYjkiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo5NzNlZTMwZC1jODI4LTEwNGUtOTU5Ni0wNjcyNzgxODg1ZjMiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5MDk1NjY4Zi01NmJhLWU3NDYtYTJkZC0yODI2NzdjYjFiNGEiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDk1NjY4Zi01NmJhLWU3NDYtYTJkZC0yODI2NzdjYjFiNGEiIHN0RXZ0OndoZW49IjIwMjAtMDItMTdUMTI6NDQ6NTBaIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjgxMmQ0OGRhLTY2Y2QtODE0YS05YmUzLTM0NzM0MmY5YWRiOSIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMjo0NDo1MFoiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSLuorsiIHBob3Rvc2hvcDpMYXllclRleHQ9Iu6iuyIvPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOlRleHRMYXllcnM+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+oK/97wAAADhJREFUGJVj+P///24gNmbAAUByIDUwxjtsijHksCnGaQCyBD5b0BXjVkS0QqKsJsozRAcPsQEOAP27s5He4AShAAAAAElFTkSuQmCC');
+        --gfx-maxBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAGOmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTAyLTE3VDEyOjU1OjM3WiIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wMi0xN1QxMjo1NTozN1oiIHhtcDpNb2RpZnlEYXRlPSIyMDIwLTAyLTE3VDEyOjU1OjM3WiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2OTMzMjljYS1jZDY3LTM2NGYtODM1NS02OTdmZmMyNGQ3ZWQiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDplOTk5YzY1Zi00OGE5LTA2NDItYjYxOS1mYmVhMTEyZTE4ZmIiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4MmY0MGJlNy0xNGMyLWY3NDYtYWZhNS1kMWJiMTcwMjIzODgiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MmY0MGJlNy0xNGMyLWY3NDYtYWZhNS1kMWJiMTcwMjIzODgiIHN0RXZ0OndoZW49IjIwMjAtMDItMTdUMTI6NTU6MzdaIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjY5MzMyOWNhLWNkNjctMzY0Zi04MzU1LTY5N2ZmYzI0ZDdlZCIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMjo1NTozN1oiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSLupKIiIHBob3Rvc2hvcDpMYXllclRleHQ9Iu6koiIvPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOlRleHRMYXllcnM+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+TTNTgQAAABZJREFUGJVj+E8kYAATBMCoQuIUEgMA5PiPcSWMrJ0AAAAASUVORK5CYII=');
+        --gfx-minBtn: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAGOmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTAyLTE3VDEzOjAwOjMyWiIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wMi0xN1QxMzowMDozMloiIHhtcDpNb2RpZnlEYXRlPSIyMDIwLTAyLTE3VDEzOjAwOjMyWiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NWQwZWRiMC1mZDAwLWI2NGYtOWVmYi1hMmI0NTg3MDVhOGEiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDphMzAwMWUxYS0yOTE5LWU0NDktYjk0Yy1jMjEyMjQ4YTlmOGEiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3ODdmNzk5Yy00YjExLWU1NGEtYjIwZC02ODYxN2VkOWM1ZTIiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ODdmNzk5Yy00YjExLWU1NGEtYjIwZC02ODYxN2VkOWM1ZTIiIHN0RXZ0OndoZW49IjIwMjAtMDItMTdUMTM6MDA6MzJaIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjg1ZDBlZGIwLWZkMDAtYjY0Zi05ZWZiLWEyYjQ1ODcwNWE4YSIgc3RFdnQ6d2hlbj0iMjAyMC0wMi0xN1QxMzowMDozMloiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHBob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8cmRmOkJhZz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSLupKEiIHBob3Rvc2hvcDpMYXllclRleHQ9Iu6koSIvPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOlRleHRMYXllcnM+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FwvRXAAAABdJREFUGNNj/P//PwMxgHGIKPw/XDwDAOr1HuzlELLnAAAAAElFTkSuQmCC'); */
+    }
+}
