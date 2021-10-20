@@ -3,6 +3,11 @@
  * @author https://github.com/booploops
  * @author booploops#7139
  * @description WinUI inspired theme
+ * @option artworkBG|Artwork Background|true
+ * @option animatedArtworkBG|Animated Artwork Background|false
+ * @option loadingIndicator|Custom Loading Indicator|true
+ * @option mouseOver|Mouse Over Transitions|false
+ * @option useSFPro|Use SF Pro font|false
 */
 :root {
     --appleEase: cubic-bezier(.42, 0, .58, 1);
@@ -15,7 +20,12 @@ body {
     font-family: var(--sysFontDisplay);
 }
 
-body::before {
+body[theme-usesfpro] {
+    font-family: inherit;
+}
+
+
+body[theme-artworkbg]::before {
     background: var(--musicKit-artwork-64);
     background-size: cover;
     background-position: center;
@@ -27,6 +37,25 @@ body::before {
     left: 0;
     content: '';
     opacity: 0.32;
+}
+
+body[theme-animatedartworkbg]::before {
+    animation: animateArtwork 35s var(--appleEase) infinite;
+}
+
+@keyframes animateArtwork {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+    25% {
+        transform: rotate(360deg) scale(3);
+    }
+    85% {
+        transform: rotate(-360deg) scale(3);
+    }
+    100% {
+        transform: rotate(0deg) scale(2);
+    }
 }
 
 .am-wordmark {
@@ -334,13 +363,13 @@ body::before {
         cursor: default;
     }
 
-    li.typography-title-3-tall.web-navigation__nav-list-item {
-        transition: all .2s var(--appleEase);
-    }
-
     li.typography-title-3-tall.web-navigation__nav-list-item:hover {
         background: var(--sidebarSelectedState);
-        transition: all .2s var(--appleEase);
+    }
+    
+    body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item:hover,
+    body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item {
+        transition: all .2s var(--appleEase);    
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected {
@@ -451,16 +480,16 @@ body::before {
         backdrop-filter: unset;
     }
 
-    .lockup {
+    body[theme-mouseover] .lockup {
         transition: all var(--appleTransition);
         position: relative;
     }
 
-    .lockup:hover {
+    body[theme-mouseover] .lockup:hover {
         transform: translateY(-2px);
     }
 
-    .lockup::before {
+    body[theme-mouseover] .lockup::before {
         transition: all var(--appleTransition);
         content: '';
         width: 100%;
@@ -477,7 +506,7 @@ body::before {
         box-shadow: unset;
     }
 
-    .lockup:hover::before {
+    body[theme-mouseover] .lockup:hover::before {
         transition: all var(--appleTransition);
         background: var(--sidebarSelectedState);
         content: '';
@@ -536,13 +565,13 @@ body::before {
         animation: var(--appleTransition) pageLoad;
     }
 
-    .view-loading {
+    body[theme-loadingindicator] .view-loading {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .view-loading::after {
+    body[theme-loadingindicator] .view-loading::after {
         width: 32px;
         height: 32px;
         content: ' ';
@@ -555,7 +584,7 @@ body::before {
         margin-top: 8em;
     }
 
-    .view-loading::before {
+    body[theme-loadingindicator] .view-loading::before {
         content: ' Music';
         position: absolute;
         font-family: "SF Pro";
