@@ -5,8 +5,8 @@
  * @description WinUI inspired theme
  * @option artworkBG|Artwork Background|true
  * @option animatedArtworkBG|Animated Artwork Background|false
- * @option loadingIndicator|Custom Loading Indicator|true
- * @option mouseOver|Mouse Over Transitions|false
+ * @option loadingIndicator|Custom Loading Indicator|false
+ * @option mouseOver|Mouse Over Effects|true
  * @option useSFPro|Use SF Pro font|false
 */
 :root {
