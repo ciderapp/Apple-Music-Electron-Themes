@@ -40,7 +40,7 @@ body[theme-artworkbg]::before {
 }
 
 body[theme-animatedartworkbg]::before {
-    animation: animateArtwork 35s var(--appleEase) infinite;
+    animation: animateArtwork 60s var(--appleEase) infinite;
 }
 
 @keyframes animateArtwork {
