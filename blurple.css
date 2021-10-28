@@ -11,7 +11,12 @@
     --systemAccentBG: #5865f2 !important;
     --systemAccentBG-pressed: #404eed !important;
     --selectionColor: #5865f2 !important;
+
+    /* font fix */
+    --sysFontDisplay: "Segoe UI Variable Display", system-ui;
+    --sysFontText: "Segoe UI Variable Text", system-ui;
 }
+
 
 @media (prefers-color-scheme:dark) {
     :root {
