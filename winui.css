@@ -808,7 +808,7 @@ body[theme-animatedartworkbg]::before {
 
     @media (prefers-color-scheme: dark) {
         input.dt-search-box__input {
-            background: rgb(200 200 200 / 5%);
+            background: rgba(200, 200, 200, 0.18);
         }
     }
 	
