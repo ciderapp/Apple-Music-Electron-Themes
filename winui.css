@@ -361,56 +361,38 @@ body[theme-animatedartworkbg]::before {
 	span#close {
 		height: var(--windowControlSize) !important;
 	}
+	
+	/** macOS Emulation Left **/
+	body[frame-type="mac"] .web-nav-window-controls #close,
+	body[frame-type="mac"] .web-nav-window-controls #minimize,
+	body[frame-type="mac"] .web-nav-window-controls #maximize
+	{
+		height: 12px!important;
+	}
+	
+	body[frame-type="mac"] .web-nav-window-controls-outer {
+		right: unset;
+		left:0px;
+	}
+	
+	body[frame-type="mac"] .web-nav-window-controls {
+		top:0px!important;
+		left: 12px;
+		height: 55px!important;
+		width: 80px!important;
+	}
+	/** macOS Emulation Left **/
+	
+	/** macOS Emulation Right **/
+	body[frame-type="mac-right"] .web-nav-window-controls {
+		width: 80px!important;
+		height: 55px!important;
+	}
+
+	/** macOS Emulation Right **/
 
     /* :not(.web-chrome-window-controls) Only apply if default frame is not enabled */
-    .web-nav-window-controls:not(.web-chrome-window-controls) #close,
-    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize,
-    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
-        width: 45px !important;
-        height: 28px !important;
-    }
-
-    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize {
-        margin: 0px !important;
-        border-radius: 0px !important;
-        background-color: transparent !important;
-        background-image: var(--gfx-minBtn);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize {
-        margin: 0px !important;
-        border-radius: 0px !important;
-        background-color: transparent !important;
-        background-image: var(--gfx-maxBtn);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .web-nav-window-controls:not(.web-chrome-window-controls) #close {
-        order: 2;
-        margin: 0px !important;
-        background-color: transparent !important;
-        background-image: var(--gfx-closeBtn);
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: 0px 1px 0px 0px !important;
-        border-radius: 0px !important;
-        width: 46px !important;
-    }
-
-    .web-nav-window-controls:not(.web-chrome-window-controls) #close:hover {
-        background-color: rgb(196, 43, 28) !important;
-        filter: unset !important;
-    }
-
-    .web-nav-window-controls:not(.web-chrome-window-controls) #minimize:hover,
-    .web-nav-window-controls:not(.web-chrome-window-controls) #maximize:hover {
-        background-color: rgb(200 200 200 / 10%) !important;
-        filter: unset !important;
-    }
-
+	
     .web-chrome-controls-container {
         z-index: 1;
         -webkit-app-region: drag;
@@ -466,6 +448,7 @@ body[theme-animatedartworkbg]::before {
             font-size: 12px;
         }
     }
+	
 
     .web-chrome:after {
         -webkit-app-region: no-drag;
@@ -476,6 +459,27 @@ body[theme-animatedartworkbg]::before {
         right: 0;
         top: 0;
     }
+	
+	body[frame-type="mac"] .web-chrome:after {
+		-webkit-app-region: drag!important;
+		background:green;
+		height:55px;
+		display: none;
+	}
+	
+	body[frame-type="mac"] .web-chrome:before {
+		-webkit-app-region: drag!important;
+		display: block!important;
+		height:55px;
+		width: 100%;
+		left: 85px;
+		content: '';
+		background: unset;
+	}
+	
+	body[frame-type="mac"] #web-navigation-search-box {
+		box-shadow: unset;
+	}
 
     nav#web-navigation-container {
         margin-top: 0px;
@@ -808,7 +812,7 @@ body[theme-animatedartworkbg]::before {
 
     @media (prefers-color-scheme: dark) {
         input.dt-search-box__input {
-            background: rgba(200, 200, 200, 0.18);
+            background: rgb(200 200 200 / 5%);
         }
     }
 	
