@@ -695,14 +695,16 @@ body[theme-animatedartworkbg]::before {
     }
 
     .context-menu {
-        padding: 6px;
+        padding: 5px 4px;
         animation: contextIn .1s var(--appleEase);
+		box-shadow: rgb(0 0 0 / 35%) 0px 8px 40px;
     }
 
     li.context-menu__option {
         border: 0px !important;
         border-radius: 4px;
-        font-size: 1.14em;
+		padding: 0px;
+        font-size: 14px;
         font-weight: normal;
     }
 
