@@ -26,6 +26,12 @@ body {
     font-family: var(--sysFontDisplay);
 }
 
+/* macOS native frame specific */
+body[platform="MacIntel"]:not(.no-acrylic) {
+    background: rgb(50 50 50 / 20%)!important;
+}
+/* macOS native frame specific */
+
 body[theme-usesfpro] {
     font-family: inherit;
 }
@@ -69,20 +75,20 @@ body[theme-animatedartworkbg]::before {
 }
 
 /* Modern style overlay scrollbars */
-::-webkit-scrollbar {
+body:not([platform="MacIntel"]) ::-webkit-scrollbar {
     width: 16px;
     height: 24px;
 }
 
-::-webkit-scrollbar-button {
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-button {
     display: none;
 }
 
-::-webkit-scrollbar-track-piece {
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-track-piece {
     background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb {
     background: transparent;
     border: 6px solid transparent;
     box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
@@ -91,7 +97,7 @@ body[theme-animatedartworkbg]::before {
     transition: border 1s;
 }
 
-::-webkit-scrollbar-thumb:hover {
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     border: 5px solid transparent;
     box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 80%);
 }
@@ -572,6 +578,10 @@ body[theme-animatedartworkbg]::before {
         background: rgb(200 200 200 / 5%) !important;
         border-left: 1px solid rgb(0 0 0 / 25%) !important;
         border-top: 1px solid rgb(0 0 0 / 25%) !important;
+    }
+
+    body[platform="MacIntel"] #web-main {
+        background: rgb(100 100 100 / 15%)!important;
     }
 
     nav#web-navigation-container {
