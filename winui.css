@@ -460,14 +460,16 @@ body[theme-animatedartworkbg]::before {
         top: 0;
     }
 	
-	body[frame-type="mac"] .web-chrome:after {
+	body[frame-type="mac"] .web-chrome:after,
+    body[platform="MacIntel"] .web-chrome:after {
 		-webkit-app-region: drag!important;
 		background:green;
 		height:55px;
 		display: none;
 	}
 	
-	body[frame-type="mac"] .web-chrome:before {
+	body[frame-type="mac"] .web-chrome:before,
+    body[platform="MacIntel"] .web-chrome:before {
 		-webkit-app-region: drag!important;
 		display: block!important;
 		height:55px;
