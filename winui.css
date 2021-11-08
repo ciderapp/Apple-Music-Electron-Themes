@@ -582,10 +582,14 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     }
 	
 	body[back-button] .playlist .songs-list__header-col, .room .songs-list__header-col {
-		top: calc(var(--backButtonBar-height) - 1px)!important;
+		top: calc(var(--backButtonBar-height) - 1px);
 	}
-
-    nav#web-navigation-container {
+ 
+	body[platform="MacIntel"] #web-main {
+        background: rgb(100 100 100 / 15%)!important;
+    }
+    
+	nav#web-navigation-container {
         border: 0px !important;
         background: transparent !important;
     }
