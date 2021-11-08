@@ -582,7 +582,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     }
 	
 	body[back-button] .playlist .songs-list__header-col, .room .songs-list__header-col {
-		top: calc(var(--backButtonBar-height) - 1px);
+		top: calc(var(--backButtonBar-height) - 1px)!important;
 	}
  
 	body[platform="MacIntel"] #web-main {
