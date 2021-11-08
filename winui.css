@@ -20,6 +20,7 @@
     --sysFontText: "Segoe UI Variable Text", system-ui;
 	--windowControlSize: 32px;
 	--windowControlSize: 36px;
+	--backButtonBar-height: 45px;
 }
 
 body {
@@ -579,10 +580,10 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         border-left: 1px solid rgb(0 0 0 / 25%) !important;
         border-top: 1px solid rgb(0 0 0 / 25%) !important;
     }
-
-    body[platform="MacIntel"] #web-main {
-        background: rgb(100 100 100 / 15%)!important;
-    }
+	
+	body[back-button] .playlist .songs-list__header-col, .room .songs-list__header-col {
+		top: calc(var(--backButtonBar-height) - 1px)!important;
+	}
 
     nav#web-navigation-container {
         border: 0px !important;
@@ -787,7 +788,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 	
 	#backButtonBar {
 		border-radius: 8px 0px 0px 0px;
-		height: 45px;
+		height: var(--backButtonBar-height);
 		display: flex;
 		align-items:center;
 	}
