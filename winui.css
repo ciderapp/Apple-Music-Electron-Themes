@@ -2,7 +2,7 @@
  * @name Eleven
  * @author https://github.com/booploops
  * @author booploops#7139
- * @themeRevision 2
+ * @themeRevision 3
  * @targetVersion 3.0.0
  * @description WinUI inspired theme
  * @option artworkBG|Artwork Background|true
@@ -12,6 +12,7 @@
  * @option loadingIndicator|Custom Loading Indicator|false
  * @option mouseOver|Mouse Over Effects|true
  * @option useSFPro|Use SF Pro font|false
+ * @option removeChromeTitle|Remove Apple Music Text|false
 */
 :root {
     --appleEase: cubic-bezier(.42, 0, .58, 1);
@@ -20,7 +21,9 @@
     --sysFontText: "Segoe UI Variable Text", system-ui;
 	--windowControlSize: 32px;
 	--windowControlSize: 36px;
-	--backButtonBar-height: 45px;
+	--chromeTitleWidth: 135px;
+	--macChromeButtons: 90px;
+	--windowsChromeButtons: 135px;
 }
 
 body {
@@ -190,12 +193,15 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 		cursor: default;
 	}
 	
-	div#lyricsButton, button.web-chrome-playback-controls__meta-btn {
+	div#lyricsButton,
+	div#airplayButton,
+	button.web-chrome-playback-controls__meta-btn {
 		transition: all .1s var(--appleEase);
 		border-radius: 6px;
 	}
 	
 	div#lyricsButton:active, 
+	div#airplayButton:active, 
 	button.web-chrome-playback-controls__meta-btn:active,
 	.web-navigation__auth-button:active {
 		transform: scale(0.86);
@@ -204,6 +210,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 	}
 	
 	div#lyricsButton:hover, 
+	div#airplayButton:hover, 
 	button.web-chrome-playback-controls__meta-btn:hover
 	{
 		background: var(--sidebarSelectedState)!important;
@@ -347,7 +354,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     /*  */
     /* Modify macOS emulation buttons */
     .web-nav-window-controls-outer {
-        width: 135px !important;
+        width: var(--macChromeButtons) !important;
     }
 
     .web-nav-window-controls {
@@ -437,7 +444,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         .web-chrome:before {
             -webkit-app-region: drag;
             content: '';
-            width: 80px;
+            width: var(--chromeTitleWidth);
             height: 100%;
             position: absolute;
             left: 0;
@@ -467,6 +474,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         top: 0;
     }
 	
+	
 	body[frame-type="mac"] .web-chrome:after,
     body[platform="MacIntel"] .web-chrome:after {
 		-webkit-app-region: drag!important;
@@ -475,6 +483,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 		display: none;
 	}
 	
+	body[theme-removechrometitle] .web-chrome:before,
 	body[frame-type="mac"] .web-chrome:before,
     body[platform="MacIntel"] .web-chrome:before {
 		-webkit-app-region: drag!important;
@@ -500,13 +509,34 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 
     .web-chrome__grid-container {
         grid-template-columns: calc(30% - 22px) minmax(40%, 900px) calc(30% + 22px) !important;
-        width: 77% !important;
+        width: calc(100% - var(--chromeTitleWidth) - var(--windowsChromeButtons)) !important;
         margin: 0 auto !important;
+		right: 0px;
         z-index: 99999 !important;
         POSITION: ABSOLUTE !important;
         height: 100% !important;
         right: 136px !important;
     }
+	
+	body[platform="MacIntel"] .web-chrome__grid-container, 
+	body[frame-type="mac"] .web-chrome__grid-container {
+		grid-template-columns: calc(30%) calc(40%) calc(30%) !important;
+		width: calc(100% - var(--macChromeButtons)) !important;
+		left: 0px!important;
+		right:0px!important;
+		max-width:100%;
+	}
+	
+	body[platform="MacIntel"] .web-chrome,
+	body[frame-type="mac"] .web-chrome
+	{
+		padding-right:0px!important;
+	}
+	
+	body[platform="Win32"][theme-removechrometitle] .web-chrome__grid-container {
+		left:0px;
+		width: calc(100% - var(--windowsChromeButtons))!important;
+	}
 
     button.button-reset.web-chrome-playback-controls__playback-btn>svg {
         margin: 0px;
@@ -580,16 +610,12 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         border-left: 1px solid rgb(0 0 0 / 25%) !important;
         border-top: 1px solid rgb(0 0 0 / 25%) !important;
     }
-	
-	body[back-button] .playlist .songs-list__header-col, .room .songs-list__header-col {
-		top: calc(var(--backButtonBar-height) - 1px)!important;
-	}
- 
-	body[platform="MacIntel"] #web-main {
+
+    body[platform="MacIntel"] #web-main {
         background: rgb(100 100 100 / 15%)!important;
     }
-    
-	nav#web-navigation-container {
+
+    nav#web-navigation-container {
         border: 0px !important;
         background: transparent !important;
     }
@@ -792,7 +818,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 	
 	#backButtonBar {
 		border-radius: 8px 0px 0px 0px;
-		height: var(--backButtonBar-height);
+		height: 45px;
 		display: flex;
 		align-items:center;
 	}
