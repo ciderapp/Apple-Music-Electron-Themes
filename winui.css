@@ -40,6 +40,9 @@ body[theme-usesfpro] {
     font-family: inherit;
 }
 
+body[theme-artworkbg] .link-list.link-box-buttons .link-box__content{
+    background: var(--modalScrimColor)
+}
 
 body[theme-artworkbg]::before {
     background: var(--musicKit-artwork-64);
