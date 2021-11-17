@@ -209,6 +209,10 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         transition: .01s var(--appleEase);
 	}
 	
+	#airplayButton, #lyricsButton, button[aria-label="My Account"], button[aria-label="Up Next"] {
+		cursor: default;
+	}
+	
 	div#lyricsButton:hover, 
 	div#airplayButton:hover, 
 	button.web-chrome-playback-controls__meta-btn:hover
