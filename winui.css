@@ -44,6 +44,7 @@ body[theme-artworkbg] .link-list.link-box-buttons .link-box__content{
     background: var(--modalScrimColor)
 }
 
+
 body[theme-artworkbg]::before {
     background: var(--musicKit-artwork-64);
     background-size: cover;
@@ -563,18 +564,18 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     
     body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item:hover,
     body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item {
-        transition: all .2s var(--appleEase);    
+        /* transition: all .2s var(--appleEase);     */
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected {
         padding-left: 8px;
         position: relative;
-        transition: all .2s var(--appleEase);
+        /* transition: all .2s var(--appleEase); */
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item {
         position: relative;
-        transition: all .2s var(--appleEase);
+        transition: padding .2s var(--appleEase);
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item::after {
