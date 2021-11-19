@@ -1,0 +1,945 @@
+/*
+ * @name Eleven (Cider Version)
+ * @author https://github.com/booploops
+ * @author booploops#7139
+ * @themeRevision 3
+ * @targetVersion 3.0.0
+ * @description WinUI inspired theme
+ * @option artworkBG|Artwork Background|true
+ * @option animatedArtworkBG|Animated Artwork Background|false
+ * @option artworkBGDrawer|Artwork Background (Drawer)|false
+ * @option popoutDrawer|Popout Drawer|true
+ * @option loadingIndicator|Custom Loading Indicator|false
+ * @option mouseOver|Mouse Over Effects|true
+ * @option useSFPro|Use SF Pro font|false
+ * @option removeChromeTitle|Remove Apple Music Text|false
+*/
+:root {
+    --appleEase: cubic-bezier(.42, 0, .58, 1);
+    --appleTransition: .2s var(--appleEase);
+    --sysFontDisplay: "Segoe UI Variable Display", system-ui;
+    --sysFontText: "Segoe UI Variable Text", system-ui;
+	--windowControlSize: 32px;
+	--windowControlSize: 36px;
+	--chromeTitleWidth: 135px;
+	--macChromeButtons: 90px;
+	--windowsChromeButtons: 135px;
+}
+
+body {
+    font-family: var(--sysFontDisplay);
+}
+
+/* macOS native frame specific */
+body[platform="MacIntel"]:not(.no-acrylic) {
+    background: rgb(50 50 50 / 20%)!important;
+}
+/* macOS native frame specific */
+
+body[theme-usesfpro] {
+    font-family: inherit;
+}
+
+body[theme-artworkbg] .link-list.link-box-buttons .link-box__content{
+    background: var(--modalScrimColor)
+}
+
+
+body[theme-artworkbg]::before {
+    background: var(--musicKit-artwork-64);
+    background-size: cover;
+    background-position: center;
+    filter: blur(80px) saturate(180%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0.32;
+}
+
+body[theme-animatedartworkbg]::before {
+    animation: animateArtwork 60s var(--appleEase) infinite;
+}
+
+@keyframes animateArtwork {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+    25% {
+        transform: rotate(360deg) scale(3);
+    }
+    85% {
+        transform: rotate(-360deg) scale(3);
+    }
+    100% {
+        transform: rotate(0deg) scale(2);
+    }
+}
+
+.am-wordmark {
+    font-family: "SF Pro";
+}
+
+/* Modern style overlay scrollbars */
+body:not([platform="MacIntel"]) ::-webkit-scrollbar {
+    width: 16px;
+    height: 24px;
+}
+
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-button {
+    display: none;
+}
+
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 6px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
+    border-radius: 16px;
+    min-height: 64px;
+    transition: border 1s;
+}
+
+body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
+    border: 5px solid transparent;
+    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 80%);
+}
+
+/* Will revert back to the standard theme if the window is less than 1000px */
+@media only screen and (min-width: 525px) {
+    body {
+        padding-top: 55px !important;
+    }
+	
+	body[theme-popoutdrawer] .web-chrome-drawer {
+		margin: 16px;
+		border-radius: 10px;
+		border:0px;
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 8px 40px var(--dialogShadowColor);
+		box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16), 0 8px 40px rgb(0 0 0 / 35%);
+		overflow: overlay;
+	}
+	
+	body[theme-popoutdrawer] .web-chrome-drawer::after {
+		content: '';
+		left:0;
+		top:0;
+		position: absolute;
+		width:100%;
+		height:32px;
+		border-radius: inherit;
+		pointer-events: none;
+	}
+	
+	
+	@keyframes web-drawer-closing {
+		0% {
+			transform: translateX(0px);
+		}
+		100% {
+			transform: translateX(120%);
+		}
+	}
+	
+	/**body[theme-artworkbgdrawer] .web-chrome-drawer {
+		backdrop-filter: unset;
+		background-color: var(--systemToolbarTitlebarMaterialSover-inactive);
+	}**/
+	
+	body[theme-artworkbgdrawer] .web-chrome-drawer::before {
+		background: var(--musicKit-artwork-64);
+		background-size: cover;
+		background-position: right;
+		filter: blur(80px) saturate(180%);
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: '';
+		opacity: 0.35;
+		overflow: hidden;
+	}
+
+    button.button-reset.web-chrome-playback-controls__playback-btn {
+        border-radius: 4px;
+        padding: 5px;
+        display: inline-flex;
+        align-items: center;
+        margin: 4px;
+        cursor: default;
+    }
+	
+	body[theme-artworkbg] .up-next__section {
+		background: transparent!important;
+		backdrop-filter: unset;
+	}
+	
+	
+	.artist-groups, .alt-section {
+		margin: 16px;
+		border-radius: 10px;
+		background: rgb(200 200 200 / 5%);
+		box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 8%);
+	}
+	
+	.alt-section {
+		background: rgb(200 200 200 / 5%)!important;
+		padding-top: 16px;
+	}
+	
+	.web-navigation__nav-label {
+		cursor: default;
+	}
+	
+	div#lyricsButton,
+	div#airplayButton,
+	button.web-chrome-playback-controls__meta-btn {
+		transition: all .1s var(--appleEase);
+		border-radius: 6px;
+	}
+	
+	div#lyricsButton:active, 
+	div#airplayButton:active, 
+	button.web-chrome-playback-controls__meta-btn:active,
+	.web-navigation__auth-button:active {
+		transform: scale(0.86);
+        background: transparent;
+        transition: .01s var(--appleEase);
+	}
+	
+	#airplayButton, #lyricsButton, button[aria-label="My Account"], button[aria-label="Up Next"] {
+		cursor: default;
+	}
+	
+	div#lyricsButton:hover, 
+	div#airplayButton:hover, 
+	button.web-chrome-playback-controls__meta-btn:hover
+	{
+		background: var(--sidebarSelectedState)!important;
+        cursor: default;
+	}
+	
+	.see-all {
+		position:relative;
+	}
+	.see-all a {
+		text-decoration: none;
+	}
+		
+	.see-all::before {
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		content: '';
+		pointer-events: none;
+		z-index: -1;
+		transform: scale(1.30);
+		border-radius: 3px;
+		transition: background var(--appleTransition);
+	}
+		
+	
+	.see-all:hover::before {
+		background:var(--sidebarSelectedState);
+	}
+	
+	.web-navigation__auth-button {
+		position: relative;
+		cursor: default;
+	}
+	
+	.web-navigation__auth-button::after {
+		content: ' ';
+		position: absolute;
+        cursor: default;
+		border-radius:6px;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		transform: scale(1.2);
+		transition: var(--appleTransition);
+	}
+	
+	.ameModal-Backdrop>div:first-child{
+		cursor: default!important;
+	}
+	
+	.web-navigation__auth-button:hover::after {
+		background: var(--sidebarSelectedState)!important;
+	}
+
+    .web-chrome-playback-controls__secondary-btn,
+    button.button-reset.web-chrome-playback-controls__playback-btn {
+        transition: .1s var(--appleEase);
+    }
+
+    .web-chrome-playback-controls__secondary-btn:hover,
+    button.button-reset.web-chrome-playback-controls__playback-btn:hover {
+        background: var(--sidebarSelectedState);
+        cursor: default;
+    }
+
+    .web-chrome-playback-controls__secondary-btn:active,
+    button.button-reset.web-chrome-playback-controls__playback-btn:active {
+        transform: scale(0.86);
+        background: transparent;
+        transition: .01s var(--appleEase);
+    }
+
+    /* note: REMOVE AFTER 2.5.1 IS RELEASED */
+    span#red,
+    span#yellow,
+    span#green {
+        transition: background .2s;
+    }
+
+    span#red {
+        margin: 0px 1px 0px 0px !important;
+        border-radius: 0px !important;
+        order: 1;
+        width: 46px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-closeBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    span#red:hover {
+        background-color: rgb(196, 43, 28) !important;
+        filter: unset !important;
+    }
+
+    span#yellow {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        width: 45px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-minBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    span#yellow:hover,
+    span#green:hover {
+        background-color: rgb(200 200 200 / 10%) !important;
+        filter: unset !important;
+    }
+
+    span#green {
+        margin: 0px !important;
+        border-radius: 0px !important;
+        width: 45px !important;
+        height: 28px !important;
+        background-color: transparent !important;
+        background-image: var(--gfx-maxBtn);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #web-navigation-container>div:first-child {
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
+        padding: 0px !important;
+        z-index: 400 !important;
+    }
+
+    #web-navigation-container>div:first-child>.dragDiv {
+        display: flex;
+    }
+
+    /*  */
+    /* Modify macOS emulation buttons */
+    .web-nav-window-controls-outer {
+        width: var(--macChromeButtons) !important;
+    }
+
+    .web-nav-window-controls {
+        position: absolute !important;
+        top: 0px !important;
+        right: 0px !important;
+        padding: 0px !important;
+        width: 135px !important;
+    }
+
+    .web-chrome-window-controls {
+        right: 1px !important;
+    }
+
+	span#minimize,
+	span#maximize,
+	span#close {
+		height: var(--windowControlSize) !important;
+	}
+	
+	/** macOS Emulation Left **/
+	body[frame-type="mac"] .web-nav-window-controls #close,
+	body[frame-type="mac"] .web-nav-window-controls #minimize,
+	body[frame-type="mac"] .web-nav-window-controls #maximize
+	{
+		height: 12px!important;
+	}
+	
+	body[frame-type="mac"] .web-nav-window-controls-outer {
+		right: unset;
+		left:0px;
+	}
+	
+	body[frame-type="mac"] .web-nav-window-controls {
+		top:0px!important;
+		left: 12px;
+		height: 55px!important;
+		width: 80px!important;
+	}
+	/** macOS Emulation Left **/
+	
+	/** macOS Emulation Right **/
+	body[frame-type="mac-right"] .web-nav-window-controls {
+		width: 80px!important;
+		height: 55px!important;
+	}
+
+	/** macOS Emulation Right **/
+
+    /* :not(.web-chrome-window-controls) Only apply if default frame is not enabled */
+	
+    .web-chrome-controls-container {
+        z-index: 1;
+        -webkit-app-region: drag;
+    }
+
+    /* add no-drag to child elements */
+    .web-chrome-playback-controls>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome-controls-container>* {
+        -webkit-app-region: no-drag;
+    }
+
+    .web-chrome-playback-lcd {
+        -webkit-app-region: no-drag !important;
+    }
+
+    .web-chrome {
+        z-index: 100 !important;
+        left: 0px !important;
+        top: 0px !important;
+        width: 100% !important;
+        position: absolute !important;
+        padding-right: 140px !important;
+        text-align: center !important;
+        display: flex !important;
+        box-shadow: unset !important;
+        background: transparent !important;
+        backdrop-filter: unset;
+    }
+
+    /* mask pseudo elements applied to .web-chrome for window dragging near the top buttons */
+    @media only screen and (min-width: 1000px) {
+        .web-chrome:before {
+            -webkit-app-region: drag;
+            content: '';
+            width: var(--chromeTitleWidth);
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            image-rendering: -webkit-optimize-contrast;
+            background-image: url(https://beta.music.apple.com/assets/favicon/favicon-16-5288c200803434492204a46856ba709b.png);
+            background-position: left 20px center;
+            background-size: 16px;
+            background-repeat: no-repeat;
+            content: "Cider";
+			text-rendering: optimizeLegibility;
+            display: flex;
+            align-items: center;
+            padding-left: 55px;
+            font-size: 12px;
+        }
+    }
+	
+
+    .web-chrome:after {
+        -webkit-app-region: no-drag;
+        content: '';
+        width: 135px;
+        height: var(--windowControlSize);
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+	
+	
+	body[frame-type="mac"] .web-chrome:after,
+    body[platform="MacIntel"] .web-chrome:after {
+		-webkit-app-region: drag!important;
+		background:green;
+		height:55px;
+		display: none;
+	}
+	
+	body[theme-removechrometitle] .web-chrome:before,
+	body[frame-type="mac"] .web-chrome:before,
+    body[platform="MacIntel"] .web-chrome:before {
+		-webkit-app-region: drag!important;
+		display: block!important;
+		height:55px;
+		width: 100%;
+		left: 85px;
+		content: '';
+		background: unset;
+	}
+	
+	body[frame-type="mac"] #web-navigation-search-box {
+		box-shadow: unset;
+	}
+
+    nav#web-navigation-container {
+        margin-top: 0px;
+    }
+
+    .web-chrome-playback-lcd__volume {
+        z-index: 1;
+    }
+
+    .web-chrome__grid-container {
+        grid-template-columns: calc(30% - 22px) minmax(40%, 900px) calc(30% + 22px) !important;
+        width: calc(100% - var(--chromeTitleWidth) - var(--windowsChromeButtons)) !important;
+        margin: 0 auto !important;
+		right: 0px;
+        z-index: 99999 !important;
+        POSITION: ABSOLUTE !important;
+        height: 100% !important;
+        right: 136px !important;
+    }
+	
+	body[platform="MacIntel"] .web-chrome__grid-container, 
+	body[frame-type="mac"] .web-chrome__grid-container {
+		grid-template-columns: calc(30%) calc(40%) calc(30%) !important;
+		width: calc(100% - var(--macChromeButtons)) !important;
+		left: 0px!important;
+		right:0px!important;
+		max-width:100%;
+	}
+	
+	body[platform="MacIntel"] .web-chrome,
+	body[frame-type="mac"] .web-chrome
+	{
+		padding-right:0px!important;
+	}
+	
+	body[platform="Win32"][theme-removechrometitle] .web-chrome__grid-container {
+		left:0px;
+		width: calc(100% - var(--windowsChromeButtons))!important;
+	}
+
+    button.button-reset.web-chrome-playback-controls__playback-btn>svg {
+        margin: 0px;
+    }
+
+    span.web-chrome-playback-lcd__contextual-badge.web-chrome-playback-lcd__contextual-badge--non-marquee {
+        background: transparent !important;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item>a {
+        cursor: default;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item:hover {
+        background: var(--sidebarSelectedState);
+    }
+    
+    body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item:hover,
+    body[theme-mouseover] li.typography-title-3-tall.web-navigation__nav-list-item {
+        /* transition: all .2s var(--appleEase);     */
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected {
+        padding-left: 8px;
+        position: relative;
+        /* transition: all .2s var(--appleEase); */
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item {
+        position: relative;
+        transition: padding .2s var(--appleEase);
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item::after {
+        background: var(--keyColor);
+        width: 4px;
+        border-radius: 10px;
+        height: 16px;
+        transform: scaleY(0);
+        position: absolute;
+        content: '';
+        top: 8px;
+        left: 0;
+        pointer-events: none;
+        transition: all .2s var(--appleEase);
+        opacity: 0;
+    }
+
+    li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected::after {
+        background: var(--keyColor);
+        width: 4px;
+        border-radius: 10px;
+        height: 16px;
+        position: absolute;
+        transform: scaleY(1);
+        content: '';
+        top: 8px;
+        left: 0;
+        pointer-events: none;
+        transition: all .2s var(--appleEase);
+        opacity: 1;
+    }
+
+    #web-main {
+        padding-top: 0px !important;
+        border-radius: 10px 0px 0px 0px;
+        /* background: transparent!important;
+        border-left: 1px solid var(--sidebarBorderRule);
+        border-top: 1px solid var(--sidebarBorderRule); */
+        background: rgb(200 200 200 / 5%) !important;
+        border-left: 1px solid rgb(0 0 0 / 25%) !important;
+        border-top: 1px solid rgb(0 0 0 / 25%) !important;
+    }
+
+    body[platform="MacIntel"] #web-main {
+        background: rgb(100 100 100 / 15%)!important;
+    }
+
+    nav#web-navigation-container {
+        border: 0px !important;
+        background: transparent !important;
+    }
+	
+	.albums-virtual-scrolling-container,
+	.albums-virtual-scrolling-container .lockup-group__content.lockup-group__content--grid {
+		overflow: visible!important;
+	}
+	
+
+    .web-navigation {
+        border: 0 !important;
+        height: calc(100vh - 55px) !important;
+    }
+
+    #backButtonBar .button-area img {
+        width: 20px;
+        pointer-events: none;
+		filter: invert(0.90);
+		
+    }
+
+    #backButtonBar .button-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 28px;
+        border-radius: 4px;
+		cursor: default;
+		background: rgb(40 40 40 / 85%);
+		border: 1px solid rgb(20 20 20 / 15%);
+		border-top: 1px solid rgb(200 200 200 / 10%);
+		border-bottom: 1px solid rgb(10 10 10 / 15%);
+		box-shadow: 0px 1px 0px 1px rgb(0 0 0 / 5%);
+		transition: background var(--appleTransition);
+    }
+	
+	#backButtonBar .button-area:hover {
+		background: var(--sidebarSelectedState)!important;
+        cursor: default;
+	}
+
+    body.has-js:not(.no-song-loaded) .artist-header--fixed,
+    body.has-js:not(.not-authenticated) .artist-header--fixed {
+        margin-top: 0px !important;
+    }
+
+    /* adjust radio station landing page */
+    .station .page-container {
+        position: inherit !important;
+    }
+
+    .page-container {
+        overflow-y: overlay !important;
+    }
+
+    .web-main-drag {
+        -webkit-app-region: unset !important;
+        width: 0px;
+        display: none;
+    }
+
+    /* Disable some of the properties on the built in frame */
+    .web-nav-window-controls {
+        background: transparent;
+        height: var(--windowControlSize) !important;
+        -webkit-app-region: no-drag !important;
+        box-shadow: unset;
+        backdrop-filter: unset;
+    }
+	
+	body[theme-mouseover] .lockup {
+        transition: all var(--appleTransition);
+        position: relative;
+		overflow: visible;
+    }
+	
+
+    body[theme-mouseover] .lockup:hover {
+        transform: translateY(-2px);
+		overflow: visible;
+    }
+
+    body[theme-mouseover] .lockup::before {
+        transition: all var(--appleTransition);
+        content: '';
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center;
+        transform: scale(1.06);
+        border-radius: 10px !important;
+        pointer-events: none;
+        z-index: -1;
+        box-shadow: unset;
+    }
+
+    body[theme-mouseover] .lockup:hover::before {
+        transition: all var(--appleTransition);
+        background: var(--sidebarSelectedState);
+        content: '';
+        border-radius: 10px;
+        transform: scale(1.06);
+        box-shadow: 0px 4px 6px 2px rgb(0 0 0 / 10%);
+    }
+
+    @keyframes contextIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .context-menu {
+        padding: 5px 4px;
+        animation: contextIn .1s var(--appleEase);
+		box-shadow: rgb(0 0 0 / 35%) 0px 8px 40px;
+    }
+
+    li.context-menu__option {
+        border: 0px !important;
+        border-radius: 4px;
+		padding: 0px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb {
+        transition: all var(--appleTransition);
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb:hover {
+        background-image: radial-gradient(var(--keyColor) 2px, transparent 3px, transparent 10px);
+        transform: scale(1.2);
+    }
+
+    .web-chrome-playback-lcd__volume-scrubber[type=range]::-webkit-slider-thumb:active {
+        background-image: radial-gradient(var(--keyColor) 3px, transparent 4px, transparent 10px);
+        transform: scale(1);
+    }
+
+    @keyframes pageLoad {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .loading-inner>.loading-inner>div {
+        animation: var(--appleTransition) pageLoad;
+    }
+
+    body[theme-loadingindicator] .view-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body[theme-loadingindicator] .view-loading::after {
+        width: 32px;
+        height: 32px;
+        content: ' ';
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: var(--keyColor) transparent var(--keyColor) transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+        font-family: "SF Pro";
+        margin-top: 8em;
+    }
+
+    body[theme-loadingindicator] .view-loading::before {
+        content: ' Music';
+        position: absolute;
+        font-family: "SF Pro";
+        font-size: 2em;
+        margin-top: -2em;
+    }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+	
+	#backButtonBar {
+		border-radius: 8px 0px 0px 0px;
+		height: 45px;
+		display: flex;
+		align-items:center;
+	}
+	
+	.dt-modal__contents {
+		animation: ameModalIn .1s var(--appleEase);
+	}
+	
+	.ameUserMenu {
+		padding: 4px;
+		animation: contextIn var(--appleTransition);
+		box-shadow: 0 8px 40px rgb(0 0 0 / 35%);
+	}
+		
+	.ameUserMenu .um-option {
+		border: 0px;
+		border-radius: 4px;
+		font-size: 14px;
+	}
+	
+	.ameUserMenu .um-option:hover {
+		border: 0px;
+	}
+	
+    input.dt-search-box__input {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(200 200 200 / 2%);
+        font-family: var(--sysFontDisplay);
+        font-size: 1.14em;
+        padding-top: 5px;
+        padding-left: 30px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        input.dt-search-box__input {
+            background: rgb(200 200 200 / 5%);
+        }
+    }
+	
+	
+
+    button.shuffle-button.action-button.typography-body-semibold-tall.button-reset {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(0 0 0 / 25%);
+    }
+
+    button.action-button.play-button {
+        border-radius: 6px;
+        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-left: 1px solid rgb(200 200 200 / 5%);
+        border-right: 1px solid rgb(200 200 200 / 5%);
+        border-bottom: 1px solid rgb(0 0 0 / 25%);
+    }
+
+    .web-chrome-playback-lcd__artwork-container {
+        border-radius: 4px !important;
+        overflow: hidden !important;
+        margin-right: 4px !important;
+    }
+
+    .web-chrome-playback-lcd__artwork-container::after {
+        box-shadow: inset 0px 0px 0px 1px rgb(200 200 200 / 16%) !important;
+        border-radius: 4px !important;
+        content: '' !important;
+    }
+
+    .web-chrome-playback-lcd {
+        background: transparent !important;
+        box-shadow: unset !important;
+        font-weight: 600 !important;
+    }
+
+    span.badge.explicit.default {
+        background: transparent !important;
+    }
+
+    .web-main-drag {
+        display: none;
+    }
+
+    /* Fix for sidebar grid */
+    .web-navigation__navigation-container {
+        grid-template-rows: 0px auto 1fr auto !important;
+    }
+
+    /* Set context menu to no-drag */
+    .context-menu {
+        -webkit-app-region: no-drag !important;
+    }
+
+    form#web-navigation-search-box {
+        margin-top: 0px !important;
+        grid-area: search !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+        border: 6px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 50%);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        border: 5px solid transparent;
+        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 80%);
+    }
+
+    #backButtonBar .button-area {
+        background: rgb(245 245 245);
+    }
+}
