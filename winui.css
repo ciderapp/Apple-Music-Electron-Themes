@@ -370,7 +370,6 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         top: 0px !important;
         right: 0px !important;
         padding: 0px !important;
-        z-index: 400 !important;
         width: 135px !important;
     }
 
@@ -692,7 +691,6 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         background: transparent;
         height: var(--windowControlSize) !important;
         -webkit-app-region: no-drag !important;
-        z-index: 999;
         box-shadow: unset;
         backdrop-filter: unset;
     }
