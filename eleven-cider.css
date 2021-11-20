@@ -457,7 +457,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
             left: 0;
             top: 0;
             image-rendering: -webkit-optimize-contrast;
-            background-image: url(https://beta.music.apple.com/assets/favicon/favicon-16-5288c200803434492204a46856ba709b.png);
+            background-image: url(https://raw.githubusercontent.com/Apple-Music-Electron/applemusicelectron.com/main/icon.png);
             background-position: left 20px center;
             background-size: 16px;
             background-repeat: no-repeat;
