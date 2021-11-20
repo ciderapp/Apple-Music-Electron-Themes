@@ -459,7 +459,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
             image-rendering: -webkit-optimize-contrast;
             background-image: url(https://raw.githubusercontent.com/Apple-Music-Electron/applemusicelectron.com/main/icon.png);
             background-position: left 20px center;
-            background-size: 32px;
+            background-size: 18px;
             background-repeat: no-repeat;
             content: "Cider";
 			text-rendering: optimizeLegibility;
