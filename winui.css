@@ -2,7 +2,7 @@
  * @name Eleven
  * @author https://github.com/booploops
  * @author booploops#7139
- * @themeRevision 3
+ * @themeRevision 4
  * @targetVersion 3.0.0
  * @description WinUI inspired theme
  * @option artworkBG|Artwork Background|true
@@ -21,6 +21,7 @@
     --sysFontText: "Segoe UI Variable Text", system-ui;
 	--windowControlSize: 32px;
 	--windowControlSize: 36px;
+	--windowControlSize: 55px;
 	--chromeTitleWidth: 135px;
 	--macChromeButtons: 90px;
 	--windowsChromeButtons: 135px;
@@ -80,34 +81,6 @@ body[theme-animatedartworkbg]::before {
 
 .am-wordmark {
     font-family: "SF Pro";
-}
-
-/* Modern style overlay scrollbars */
-body:not([platform="MacIntel"]) ::-webkit-scrollbar {
-    width: 16px;
-    height: 24px;
-}
-
-body:not([platform="MacIntel"]) ::-webkit-scrollbar-button {
-    display: none;
-}
-
-body:not([platform="MacIntel"]) ::-webkit-scrollbar-track-piece {
-    background: transparent;
-}
-
-body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb {
-    background: transparent;
-    border: 6px solid transparent;
-    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 50%);
-    border-radius: 16px;
-    min-height: 64px;
-    transition: border 1s;
-}
-
-body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
-    border: 5px solid transparent;
-    box-shadow: inset 0px 0px 10px 10px rgb(200 200 200 / 80%);
 }
 
 /* Will revert back to the standard theme if the window is less than 1000px */
@@ -553,6 +526,25 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         background: transparent !important;
     }
 
+    #web-navigation-search-box {
+        padding-inline-end: 16px;
+        padding-inline-start: 16px;
+    }
+
+    #web-navigation-scrollable {
+        overflow: overlay;
+        padding-inline-start: 16px;
+        padding-inline-end: 16px;
+    }
+
+    #web-navigation-scrollable::-webkit-scrollbar {
+        display: none;
+    }
+
+    #web-navigation-scrollable:hover::-webkit-scrollbar {
+        display: unset;
+    }
+
     li.typography-title-3-tall.web-navigation__nav-list-item>a {
         cursor: default;
     }
@@ -567,25 +559,51 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected {
-        padding-left: 8px;
+        /* padding-left: 8px; */
         position: relative;
-        /* transition: all .2s var(--appleEase); */
+        transition: all .2s var(--appleEase);
     }
 
     li.typography-title-3-tall.web-navigation__nav-list-item {
         position: relative;
-        transition: padding .2s var(--appleEase);
+        /* transition: all .2s var(--appleEase); */
+        padding: 8px;
+        height: 35px;
     }
+
+    .web-navigation__nav-list-item .web-navigation__nav-label {
+        font-weight: normal;
+        font-size: 14px;
+        font-family: var(--sysFontText);
+    }
+
+    .web-navigation__nav-list-item--selected .web-navigation__nav-label {
+        font-weight: normal;
+    }
+
+    .web-navigation__header-text {
+        font-size: 12px;
+        font-weight: normal;
+
+    }
+	
+	html[dir=ltr] .web-navigation__playlist-folder--has-children>.web-navigation__playlist-folder-arrow-indicator::before {
+		left: -6px;
+	}
+	
+	.web-navigation__folder-icon {
+		margin-left: 4.5px;
+	}
 
     li.typography-title-3-tall.web-navigation__nav-list-item::after {
         background: var(--keyColor);
-        width: 4px;
+        width: 3.5px;
         border-radius: 10px;
         height: 16px;
-        transform: scaleY(0);
+        transform: scaleY(1) scaleX(0) translateY(9.5px);
         position: absolute;
         content: '';
-        top: 8px;
+        top: 0px;
         left: 0;
         pointer-events: none;
         transition: all .2s var(--appleEase);
@@ -594,13 +612,13 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 
     li.typography-title-3-tall.web-navigation__nav-list-item.web-navigation__nav-list-item--selected::after {
         background: var(--keyColor);
-        width: 4px;
+        width: 3.5px;
         border-radius: 10px;
         height: 16px;
         position: absolute;
-        transform: scaleY(1);
+        transform: scaleY(1) scaleX(.8) translateY(9.5px) translateZ(0px);
         content: '';
-        top: 8px;
+        top: 0px;
         left: 0;
         pointer-events: none;
         transition: all .2s var(--appleEase);
@@ -851,19 +869,31 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 	
     input.dt-search-box__input {
         border-radius: 6px;
-        border-top: 1px solid rgb(200 200 200 / 12%);
+        border-top: 1px solid rgb(200 200 200 / 5%);
         border-left: 1px solid rgb(200 200 200 / 5%);
         border-right: 1px solid rgb(200 200 200 / 5%);
-        border-bottom: 1px solid rgb(200 200 200 / 2%);
+        border-bottom: 1px solid rgb(200 200 200 / 80%);
         font-family: var(--sysFontDisplay);
-        font-size: 1.14em;
-        padding-top: 5px;
+        font-size: 14px;
+        padding-top: 4px;
         padding-left: 30px;
+        position: relative;
+        opacity: 1!important;
+    }
+
+    input.dt-search-box__input:focus {
+        border-bottom: 2px solid var(--keyColor);
+        outline: unset;
+        box-shadow: unset;
     }
 
     @media (prefers-color-scheme: dark) {
         input.dt-search-box__input {
-            background: rgb(200 200 200 / 5%);
+            background: rgb(200 200 200 / 10%);
+        }
+
+        input.dt-search-box__input:focus {
+            background: rgb(20 20 20 / 14%);
         }
     }
 	
@@ -928,17 +958,6 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 }
 
 @media (prefers-color-scheme: light) {
-    ::-webkit-scrollbar-thumb {
-        background: transparent;
-        border: 6px solid transparent;
-        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 50%);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        border: 5px solid transparent;
-        box-shadow: inset 0px 0px 10px 10px rgb(10 10 10 / 80%);
-    }
-
     #backButtonBar .button-area {
         background: rgb(245 245 245);
     }
