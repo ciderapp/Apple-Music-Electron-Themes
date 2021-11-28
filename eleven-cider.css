@@ -785,6 +785,10 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         animation: var(--appleTransition) pageLoad;
     }
 
+    body[theme-loadingindicator] .pulse-spinner {
+        display: none;
+    }
+
     body[theme-loadingindicator] .view-loading {
         display: flex;
         justify-content: center;
