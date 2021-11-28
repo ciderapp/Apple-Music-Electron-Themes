@@ -803,6 +803,10 @@ body[theme-animatedartworkbg]::before {
         animation: var(--appleTransition) pageLoad;
     }
 
+    body[theme-loadingindicator] .pulse-spinner {
+        display: none;
+    }
+
     body[theme-loadingindicator] .view-loading {
         display: flex;
         justify-content: center;
