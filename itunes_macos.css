@@ -198,7 +198,7 @@
     .web-chrome:before {
         -webkit-app-region: drag;
         content: '';
-        width: calc(100% - 90px);
+        width: calc(100% - var(--windowsChromeWidth));
         height: 100%;
         position: absolute;
         right: 0;
