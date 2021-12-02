@@ -385,6 +385,7 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
         	margin-top: 5px;
         	margin-right: 4px;
 		border-radius: 6px;
+		transition: all .1s var(--appleEase);
 	}
 	
 	/** macOS Emulation Left **/
