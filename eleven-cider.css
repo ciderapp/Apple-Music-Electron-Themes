@@ -21,7 +21,7 @@
     --sysFontText: "Segoe UI Variable Text", system-ui;
 	--windowControlSize: 32px;
 	--windowControlSize: 36px;
-	--windowControlSize: 46px;
+	--windowControlSize: 55px;
 	--chromeTitleWidth: 135px;
 	--macChromeButtons: 90px;
 	--windowsChromeButtons: 135px;
@@ -382,12 +382,8 @@ body:not([platform="MacIntel"]) ::-webkit-scrollbar-thumb:hover {
 	span#maximize,
 	span#close {
 		height: var(--windowControlSize) !important;
-        margin-top: 5px;
-        margin-right: 4px;
-		border-radius: 6px;
-		transition: all .1s var(--appleEase);
 	}
-
+	
 	/** macOS Emulation Left **/
 	body[frame-type="mac"] .web-nav-window-controls #close,
 	body[frame-type="mac"] .web-nav-window-controls #minimize,
